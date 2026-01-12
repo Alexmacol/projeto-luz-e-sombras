@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1" />
+
+    <title>Led Zeppelin — Light and Shade</title>
+
+    <link
+      rel="stylesheet"
+      href="src/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="src/css/responsive.css" />
+  </head>
+  <body class="title-gap-2">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="interface">
+        <div class="header-content">
+          <h1 class="logo">
+            <a
+              href="#"
+              class="transition">
+              Led Zeppelin<span class="subtitle">Light and Shade</span>
+            </a>
+          </h1>
+
+          <!-- DESKTOP NAV -->
+          <nav
+            class="nav-desktop"
+            aria-label="Navegação principal">
+            <ul>
+              <li>
+                <a
+                  href="#"
+                  class="transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#history"
+                  class="transition"
+                  >História</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#profiles"
+                  class="transition"
+                  >Perfis</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#discography"
+                  class="transition"
+                  >Discografia</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#timeline"
+                  class="transition"
+                  >Linha do tempo</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero container">
+      <!-- watermark (image-inspired) -->
+      <div
+        class="hero-watermark"
+        aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <h1>Led Zeppelin<span>LIGHT AND SHADE</span></h1>
+        <p>
+          Discografia, história e mitos — explore a história do Led Zeppelin.
+        </p>
+
+        <!-- search -->
+        <div class="search-container">
+          <div class="search-wrapper">
+            <label
+              for="siteSearch"
+              class="sr-only"
+              >Pesquisar</label
+            >
+            <div class="search-input-wrapper">
+              <input
+                id="siteSearch"
+                type="search"
+                placeholder='Pesquise: "Zoso", "1971", "IV"'
+                class="search" />
+              <button
+                aria-label="Pesquisar"
+                class="search-button transition">
+                Buscar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- chips / suggested terms -->
+        <div class="tags1-container">
+          <button class="tag">ZOSO</button>
+          <button class="tag">1971</button>
+          <button class="tag">Led Zeppelin IV</button>
+          <button class="tag">Kashmir</button>
+          <button class="tag">Celebration</button>
+        </div>
+        <div class="tags2-container">
+          <button class="tag">Plant</button>
+          <button class="tag">Page</button>
+          <button class="tag">Bonham</button>
+          <button class="tag">Jones</button>
+          <button class="tag">Mothership</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <!-- History -->
+      <section
+        class="history-section fade-in-section"
+        id="history">
+        <div class="interface">
+          <h2 class="section-title">História</h2>
+          <h3 class="section-subtitle">A Jornada</h3>
+          <div class="history-wrapper">
+            <!-- card adicionado dinamicamente -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Profiles -->
+      <section
+        class="profiles-section fade-in-section"
+        id="profiles">
+        <div class="interface">
+          <h2 class="section-title">Perfis</h2>
+          <h3 class="section-subtitle">Os Quatro Elementos</h3>
+          <p class="section-intro">
+            Em 1971, o Led Zeppelin decidiu que sua música deveria falar por si.
+            Sem nomes ou rostos na capa, cada membro escolheu um símbolo (sigilo
+            mágico) para representar sua essência. O que se segue é o perfil das
+            quatro forças que, em equilíbrio, definiram o som de uma era.
+          </p>
+          <div class="profiles-wrapper">
+            <!-- cards adicionados dinamicamente -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Discography -->
+      <section
+        class="discography-section fade-in-section"
+        id="discography">
+        <div class="interface">
+          <h2 class="section-title">Discografia</h2>
+          <h3 class="section-subtitle">O Legado</h3>
+          <div class="discography-wrapper">
+            <!-- cards adicionados dinamicamente -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section
+        class="timeline-section fade-in-section"
+        id="timeline">
+        <div class="interface">
+          <h2 class="section-title">Linha do tempo</h2>
+          <h3 class="section-subtitle">Crônicas</h3>
+          <div class="timeline-container">
+            <!-- Círculo principal -->
+            <div class="timeline-circle">
+              <!-- Centro da timeline -->
+              <div
+                class="timeline-center"
+                id="timelineCenter">
+                <span class="hint">Passe o mouse sobre uma data</span>
+              </div>
+
+              <!-- Pontos (datas) -->
+              <div class="timeline-point">1968</div>
+              <div class="timeline-point">1969</div>
+              <div class="timeline-point">1970</div>
+              <div class="timeline-point">1971</div>
+              <div class="timeline-point">1973</div>
+              <div class="timeline-point">1975</div>
+              <div class="timeline-point">1977</div>
+              <div class="timeline-point">1979</div>
+              <div class="timeline-point">1980</div>
+              <div class="timeline-point">1985</div>
+              <div class="timeline-point">1988</div>
+              <div class="timeline-point">1995</div>
+              <div class="timeline-point">2007</div>
+              <div class="timeline-point">2012</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="interface">
+        <ul class="footer-links">
+          <li>
+            <a
+              href="https://github.com/Alexmacol"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.ledzeppelin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Led Zeppelin Official</a
+            >
+          </li>
+          <li><a href="mailto:alexmacol@gmail.com">email</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script
+      type="module"
+      src="src/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .mobile-btn {
+    display: none;
+  }
+
+  .nav-mobile {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .search-wrapper {
+    width: 75%;
+  }
+
+  .card-content-split {
+    flex-direction: row; /* Mantém linha para telas maiores */
+    justify-content: space-between; /* Alinhar os itens */
+    gap: 2rem; /* Aumentar o gap para telas maiores */
+  }
+
+  .card-content-split .left-side {
+    flex-basis: 55%; /* Lado esquerdo ocupa 55% */
+  }
+
+  .card-content-split .right-side {
+    flex-basis: 40%; /* Lado direito ocupa 40% */
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-wrapper {
+    width: 66.666667%;
+  }
+}
