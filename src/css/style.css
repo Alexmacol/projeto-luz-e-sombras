@@ -328,9 +328,9 @@ button {
 .section-title {
   text-align: center;
   line-height: clamp(
-    1rem,
+    1rem, /* altura minima */
     2vw,
-    24px /* altura maxima */
+    1.5rem /* altura maxima */
   ); 
   font-family: var(--font-header);
   font-size: 1.5rem;
@@ -347,8 +347,8 @@ button {
   line-height: clamp(
     1.375rem /* altura minima */
     2vw,
-    1.5rem);
-  
+    1.5rem /* altura maxima */
+  );
   font-family: var(--font-header);
   font-size: 20px; /* tamanho da fonte atualizado */
   letter-spacing: 0.2rem;

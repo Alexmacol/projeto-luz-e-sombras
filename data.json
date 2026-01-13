@@ -1,0 +1,409 @@
+{
+  "led_zeppelin": {
+    "historia": "Formado em 1968 sobre as cinzas da banda The Yardbirds, o Led Zeppelin reuniu o guitarrista Jimmy Page, o vocalista Robert Plant, o baixista John Paul Jones e o baterista John Bonham. Sua estreia com \"Led Zeppelin\" e a sequência \"Led Zeppelin II\", ambos de 1969, definiram o hard rock com riffs poderosos e uma base de blues pesado, estabelecendo-os como uma força musical.\n\nA banda expandiu seu som com o acústico \"Led Zeppelin III\" em 1970, mas foi com \"Led Zeppelin IV\" (1971) que alcançou o estrelato global. Este álbum, contendo o hino \"Stairway to Heaven\", tornou-se um dos mais vendidos da história e é universalmente aclamado. O sucesso continuou com o experimental \"Houses of the Holy\" de 1973, consolidando seu domínio.\n\nNo auge de sua popularidade, fundaram seu próprio selo, Swan Song Records, em 1974. Lançaram o monumental álbum duplo \"Physical Graffiti\" em 1975, frequentemente considerado pela crítica como sua obra-prima artística e um de seus maiores sucessos comerciais. Este período foi marcado por turnês grandiosas que quebraram recordes de público.\n\nO final da década de 1970 foi marcado por adversidades, incluindo acidentes e tragédias pessoais que afetaram a produção da banda. O álbum \"Presence\" (1976) reflete essa tensão, e \"In Through the Out Door\" (1979) foi o último trabalho de estúdio gravado pela formação original, mostrando uma maior influência dos teclados.\n\nA trajetória da banda terminou abruptamente com a morte do baterista John Bonham em setembro de 1980. Em respeito à sua importância insubstituível, os membros restantes anunciaram o fim do Led Zeppelin em dezembro daquele ano. Seu legado permanece imenso, influenciando gerações e sendo aclamados como pioneiros do rock pesado.",
+    "timeline": [
+      {
+        "year": "1968 — Formação",
+        "text": "<p>Jimmy Page reúne Robert Plant, John Paul Jones e John Bonham.</p><p>O grupo nasce como The New Yardbirds, mas logo adota o nome Led Zeppelin.</p>"
+      },
+      {
+        "year": "1969 — Ascensão Imediata",
+        "text": "<p>Lançamento dos álbuns Led Zeppelin I (janeiro) e Led Zeppelin II (outubro).</p><p>A banda explode mundialmente com seu som pesado e inovador.</p>"
+      },
+      {
+        "year": "1970 — Expansão Musical",
+        "text": "<p>Lançamento de Led Zeppelin III, com forte influência folk.</p><p>Inclui as faixas Immigrant Song, Since I've been Loving You e Tangerine.</p><p>A banda se distancia da mídia e reforça seu ar enigmático.</p>"
+      },
+      {
+        "year": "1971 — O Clássico Absoluto",
+        "text": "<p>Lançamento de Led Zeppelin IV, um dos álbuns mais vendidos da história.</p><p>Inclui \"Stairway to Heaven\", que se torna um marco do rock.</p>"
+      },
+      {
+        "year": "1973 — Domínio Mundial",
+        "text": "<p>Lançamento de Houses of the Holy, marcado pela liberdade criativa.</p><p>Turnês gigantescas estabelecem números recordes de espectadores.</p><p>Criação da gravadora própria: a Swan Song Records.</p>"
+      },
+      {
+        "year": "1975 — Obra-Prima Dupla",
+        "text": "<p>Lançamento do álbum duplo Physical Graffiti, primeiro pela recém criada Swan Song Records.</p><p>Inclui a icônica Kashimir, Ten Years Gone e In My Time of Dying.</p><p>O Led Zeppelin atinge o auge criativo e comercial.</p>"
+      },
+      {
+        "year": "1977 — Tragédia e Hiato",
+        "text": "<p>Morte de Karac Plant, filho de Robert Plant aos 5 anos de idade.</p><p>A turnê americana é cancelada e a banda entra em pausa.</p>"
+      },
+      {
+        "year": "1979 — Retorno",
+        "text": "<p>Lançamento do álbum In Through the Out Door, repleto de texturas e sintetizadores, é considerado o disco de John Paul Jones.</p><p>É o último álbum gravado em estúdio marcando o testamento final do grupo.</p><p>Shows históricos em Knebworth, marcando o retorno aos palcos.</p>"
+      },
+      {
+        "year": "1980 — Fim da Banda",
+        "text": "<p>Morte de John Bonham em setembro.</p><p>A banda anuncia oficialmente o seu fim, afirmando que não poderia continuar sem ele.</p><p>Dois anos depois é lançado CODA, álbum com sobras de estúdio de faixas gravadas entre 1968 e 1978.</p>"
+      },
+      {
+        "year": "1985 — Live Aid",
+        "text": "<p>Primeira vez que os três membros remanescentes se reuniram no palco após a morte de John Bonham em 1980, com Phil Collins e Tony Thompson na bateria. A apresentação teve um setlist curto: Rock and Roll, Whole Lotta Love e Stairway to Heaven</p>"
+      },
+      {
+        "year": "1988 — Atlantic 40 anos",
+        "text": "<p>Reunião em celebração aos 40 anos da Atlantic Records.</p><p>No setlist: Stairway to Heaven, Misty Mountain Hop, Rock and Roll, Whole Lotta Love e Kashimir.</p><p> Destaque para Jason Bonham na bateria, filho do lendário John Bonham.</p>"
+      },
+      {
+        "year": "1995 — Hall da Fama",
+        "text": "<p>O Led Zeppelin é introduzido no Rock and Roll Hall of Fame.</p><p>A performance histórica e explosiva contou com convidados interpretando as músicas ao lado da banda.</p><p>Novamente com Jason Bonham assumindo a bateria.</p>"
+      },
+      {
+        "year": "2007 — Celebration Day",
+        "text": "<p>Show histórico em Londres, em homenagem a Ahmet Ertegun, fundador da Atlantic Records.</p><p>Formação: Page, Plant, Jones e Jason Bonham.</p><p>18 mil ingressos são vendidos.</p><p>Considerado por muitos o melhor show de reunião da história do rock.</p>"
+      },
+      {
+        "year": "2012 — Filme/Álbum Ao Vivo",
+        "text": "<p>O show Celebration Day realizado em 2007 é lançado oficialmente como álbum e filme nos cinemas.</p><p>Vence o Grammy de Melhor Álbum de Rock.</p>"
+      }
+    ],
+    "albuns": [
+      {
+        "album": "Led Zeppelin",
+        "year": 1969,
+        "tracks": [
+          "Good Times Bad Times",
+          "Babe I'm Gonna Leave You",
+          "You Shook Me",
+          "Dazed And Confused",
+          "Your Time Is Gonna Come",
+          "Black Mountain Side",
+          "Communication Breakdown",
+          "I Can't Quit You Baby",
+          "How Many More Times"
+        ],
+        "description": "O álbum de estreia homônimo é uma explosão de blues-rock pesado e psicodelia. Lançado em 1969, ele estabeleceu a base sonora da banda, com faixas como 'Dazed and Confused' e 'Communication Breakdown' que misturam a ferocidade do rock com as raízes profundas do blues americano, definindo um novo paradigma para a música pesada."
+      },
+      {
+        "album": "Led Zeppelin II",
+        "year": 1969,
+        "tracks": [
+          "Whole Lotta Love",
+          "What Is and What Should Never Be",
+          "The Lemon Song",
+          "Thank You",
+          "Heartbreaker",
+          "Living Loving Maid (She's Just a Woman)",
+          "Ramble On",
+          "Moby Dick",
+          "Bring It On Home"
+        ],
+        "description": "Considerado por muitos o álbum que definiu o hard rock, 'Led Zeppelin II' é mais direto e pesado que seu antecessor. Gravado enquanto a banda estava em turnê, o álbum captura a energia crua de suas apresentações ao vivo, com riffs icônicos em faixas como 'Whole Lotta Love' e 'Heartbreaker', e uma temática que explora o sexo, a estrada e a mitologia do rock and roll."
+      },
+      {
+        "album": "Led Zeppelin III",
+        "year": 1970,
+        "tracks": [
+          "Immigrant Song",
+          "Friends",
+          "Celebration Day",
+          "Since I've Been Loving You",
+          "Out On The Tiles",
+          "Gallows Pole",
+          "Tangerine",
+          "That's The Way",
+          "Bron-Y-Aur Stomp",
+          "Hats Off To (Roy) Harper"
+        ],
+        "description": "Este álbum marcou uma virada surpreendente para um som predominantemente acústico e folk, inspirado por um retiro em uma cabana no País de Gales (Bron-Y-Aur). Apesar de ainda conter faixas de rock pesado como 'Immigrant Song', o álbum é dominado por baladas pastorais e melodias celtas, explorando temas de natureza, mitologia e introspecção, mostrando a versatilidade musical da banda."
+      },
+      {
+        "album": "Led Zeppelin IV",
+        "year": 1971,
+        "tracks": [
+          "Black Dog",
+          "Rock and Roll",
+          "The Battle of Evermore",
+          "Stairway to Heaven",
+          "Misty Mountain Hop",
+          "Four Sticks",
+          "Going to California",
+          "When the Levee Breaks"
+        ],
+        "description": "Um dos álbuns mais icônicos e misteriosos da história do rock, o quarto álbum sem título é uma obra-prima que consolida todos os elementos do som do Led Zeppelin. Do hard rock pulsante de 'Black Dog' ao folk místico de 'The Battle of Evermore' e a épica e atemporal 'Stairway to Heaven', o álbum explora temas de ocultismo, fantasia e espiritualidade, tornando-se um marco cultural."
+      },
+      {
+        "album": "Houses of the Holy",
+        "year": 1973,
+        "tracks": [
+          "The Song Remains The Same",
+          "The Rain Song",
+          "Over The Hills And Far Away",
+          "The Crunge",
+          "Dancing Days",
+          "D'yer Mak'er",
+          "No Quarter",
+          "The Ocean"
+        ],
+        "description": "Expandindo ainda mais suas fronteiras musicais, 'Houses of the Holy' incorpora influências de reggae ('D'yer Mak'er') e funk ('The Crunge') em seu som. O álbum é mais brilhante e otimista, com uma produção mais polida e complexa. As letras mergulham em temas de fantasia, mitologia e viagens, como visto na épica 'No Quarter' e na melódica 'The Rain Song'."
+      },
+      {
+        "album": "Physical Graffiti",
+        "year": 1975,
+        "tracks": [
+          "Custard Pie",
+          "The Rover",
+          "In My Time of Dying",
+          "Houses of the Holy",
+          "Trampled Under Foot",
+          "Kashmir",
+          "In the Light",
+          "Bron-Yr-Aur",
+          "Down By the Seaside",
+          "Ten Years Gone",
+          "Night Flight",
+          "The Wanton Song",
+          "Boogie With Stu",
+          "Black Country Woman",
+          "Sick Again"
+        ],
+        "description": "Um álbum duplo monumental que serve como uma vitrine para a diversidade musical do Led Zeppelin. 'Physical Graffiti' passeia por hard rock, blues, funk, e até música oriental na majestosa 'Kashmir'. O álbum reúne novas gravações com sobras de sessões anteriores, criando uma obra expansiva e coesa que explora temas que vão da vida na estrada a reflexões existenciais."
+      },
+      {
+        "album": "Presence",
+        "year": 1976,
+        "tracks": [
+          "Achilles Last Stand",
+          "For Your Life",
+          "Royal Orleans",
+          "Nobody's Fault But Mine",
+          "Candy Store Rock",
+          "Hots On For Nowhere",
+          "Tea For One"
+        ],
+        "description": "Gravado em um período turbulento para a banda, 'Presence' é um álbum visceral e dominado por guitarras. É o único álbum de estúdio que não contém teclados ou violões, resultando em um som de hard rock direto e intenso. Faixas como a épica 'Achilles Last Stand' refletem um senso de urgência e luta, com temas líricos que abordam a sobrevivência e a resiliência."
+      },
+      {
+        "album": "In Through the Out Door",
+        "year": 1979,
+        "tracks": [
+          "In The Evening",
+          "South Bound Saurez",
+          "Fool In The Rain",
+          "Hot Dog",
+          "Carouselambra",
+          "All My Love",
+          "I'm Gonna Crawl"
+        ],
+        "description": "Marcado pela crescente influência do tecladista John Paul Jones, este álbum adota uma sonoridade mais pop e experimental, com uso proeminente de sintetizadores. Canções como 'Fool in the Rain' (com seu ritmo de samba) e a balada 'All My Love' mostram uma faceta mais suave e melódica da banda, contrastando com o rock pesado de seus primeiros anos. Os temas refletem maturidade e perda."
+      },
+      {
+        "album": "Coda",
+        "year": 1982,
+        "tracks": [
+          "We're Gonna Groove",
+          "Poor Tom",
+          "I Can't Quit You Baby",
+          "Walter's Walk",
+          "Ozone Baby",
+          "Darlene",
+          "Bonzo's Montreux",
+          "Wearing and Tearing"
+        ],
+        "description": "Lançado após a morte de John Bonham e o fim da banda, 'Coda' é uma coleção de faixas não lançadas e outtakes de várias sessões de gravação ao longo da carreira do Led Zeppelin. O álbum serve como um epílogo, oferecendo um vislumbre de diferentes momentos da banda, desde o blues pesado do início de carreira até faixas mais experimentais, funcionando como uma despedida para os fãs."
+      },
+      {
+        "album": "Led Zeppelin (Box Set)",
+        "year": 1990,
+        "tracks": [
+          "Whole Lotta Love",
+          "Heartbreaker",
+          "Communication Breakdown",
+          "Babe I'm Gonna Leave You",
+          "What Is and What Should Never Be",
+          "Thank You",
+          "I Can't Quit You Baby",
+          "Dazed and Confused",
+          "Your Time Is Gonna Come",
+          "Ramble On",
+          "Travelling Riverside Blues",
+          "Friends",
+          "Celebration Day",
+          "Hey Hey What Can I Do",
+          "White Summer / Black Mountain Side",
+          "Black Dog",
+          "Over the Hills and Far Away",
+          "Immigrant Song",
+          "The Battle of Evermore",
+          "Bron-Y-Aur Stomp",
+          "Tangerine",
+          "Going to California",
+          "Since I've Been Loving You",
+          "D'yer Mak'er",
+          "Gallows Pole",
+          "Custard Pie",
+          "Misty Mountain Hop",
+          "Rock and Roll",
+          "The Rain Song",
+          "Stairway to Heaven",
+          "Kashmir",
+          "Trampled Under Foot",
+          "For Your Life",
+          "No Quarter",
+          "Dancing Days",
+          "When the Levee Breaks",
+          "Achilles Last Stand",
+          "The Song Remains the Same",
+          "Ten Years Gone",
+          "In My Time of Dying",
+          "In the Evening",
+          "Candy Store Rock",
+          "The Ocean",
+          "Ozone Baby",
+          "Houses of the Holy",
+          "Wearing and Tearing",
+          "Poor Tom",
+          "Nobody's Fault But Mine",
+          "Fool in the Rain",
+          "In the Light",
+          "The Wanton Song",
+          "Moby Dick / Bonzo's Montreux",
+          "I'm Gonna Crawl",
+          "All My Love"
+        ],
+        "description": "Conjunto de quatro CDs que marcou a primeira vez que o catálogo da banda foi masterizado para CD, sob supervisão de Jimmy Page que diferente de um álbum de estúdio, possui 54 faixas pensadas pelo guitarrista Jimmy Page para oferecer um panorama da carreira da banda, com todas as músicas óbvias e essenciais presentes. Além de incluir canções de todos os nove álbuns de estúdio, o conjunto apresenta material especial como uma nova faixa (Traveling to Riverside Blues), uma gravação ao vivo inédita (White Summer Black Mountain Side) e uma mistura de duas músicas (Moby Dick e Bonzo's Montreux). O pacote inclui um livreto de 36 páginas com informações da banda e fotos. Algumas edições maiores (tamanho LP) para colecionadores também incluíam pôsteres da banda."
+      },
+      {
+        "album": "Led Zeppelin Remasters",
+        "year": 1990,
+        "tracks": [
+          "Communication Breakdown",
+          "Babe I'm Gonna Leave You",
+          "Good Times Bad Times",
+          "Dazed and Confused",
+          "Whole Lotta Love",
+          "Heartbreaker",
+          "Ramble On",
+          "Immigrant Song",
+          "Celebration Day",
+          "Since I've Been Loving You",
+          "Black Dog",
+          "Rock and Roll",
+          "The Battle of Evermore",
+          "Misty Mountain Hop",
+          "Stairway to Heaven",
+          "The Song Remains the Same",
+          "The Rain Song",
+          "D'yer Mak'er",
+          "No Quarter",
+          "Houses of the Holy",
+          "Kashmir",
+          "Trampled Underfoot",
+          "Nobody's Fault But Mine",
+          "Achilles Last Stand",
+          "All My Love",
+          "In the Evening"
+        ],
+        "description": "A versão em CD duplo do Led Zeppelin Remasters, lançada simultaneamente à caixa quádrupla em outubro de 1990, serviu como uma compilação de melhores momentos mais acessível para o público geral.Focando nos principais sucessos e nas músicas mais icônicas da banda. apresentava 24 faixas, incluindo clássicos indiscutíveis como Stairway to Heaven, Whole Lotta Love, Black Dog, Rock and Roll e Kashmir, todas se beneficiando da remasterização digital supervisionada por Jimmy Page oferecendo um resumo poderoso e de alta qualidade da lendária carreira do Led Zeppelin."
+      },
+      {
+        "album": "Led Zeppelin Boxed Set 2",
+        "year": 1993,
+        "tracks": [
+          "Good Times Bad Times",
+          "We're Gonna Groove",
+          "Night Flight",
+          "That's the Way",
+          "Baby Come On Home (Previously Unreleased)",
+          "The Lemon Song",
+          "You Shook Me",
+          "Boogie With Stu",
+          "Bron-Yr-Aur",
+          "Down by the Seaside",
+          "Out on the Tiles",
+          "Black Mountain Side",
+          "Moby Dick",
+          "Sick Again",
+          "Hot Dog",
+          "Carouselambra",
+          "South Bound Saurez",
+          "Walter's Walk",
+          "Darlene",
+          "Black Country Woman",
+          "How Many More Times",
+          "The Rover",
+          "Four Sticks",
+          "Hats Off to (Roy) Harper",
+          "I Can't Quit You Baby",
+          "Hots On for Nowhere",
+          "Living Loving Maid (She's Just a Woman)",
+          "Royal Orleans",
+          "Bonzo's Montreux",
+          "The Crunge",
+          "Bring It On Home",
+          "Tea For One"
+        ],
+        "description": "Lançado em setembro de 1993, foi concebido para complementar o primeiro box set de 1990, reunindo todas as faixas restantes do catálogo de estúdio da banda que haviam ficado de fora da compilação anterior. A principal função deste box era garantir que, combinando-o com o primeiro Boxed Set, os fãs tivessem a discografia completa de estúdio da banda em formato remasterizado.O grande atrativo para os colecionadores foi a inclusão da faixa de estúdio inédita na época, Baby Come On Home. O box também vinha acompanhado de um livreto de 54 páginas, contendo fotos e informações detalhadas sobre as gravações."
+      },
+      {
+        "album": "Early Days and Latter Days",
+        "year": 2002,
+        "tracks": [
+          "Good Times, Bad Times",
+          "Babe I'm Gonna Leave You",
+          "Dazed And Confused",
+          "Communication Breakdown",
+          "Whole Lotta Love",
+          "What Is And What Should Never Be",
+          "Immigrant Song",
+          "Since I've Been Loving You",
+          "Black Dog",
+          "Rock And Roll",
+          "The Battle Of Evermore",
+          "When The Levee Breaks",
+          "Stairway To Heaven",
+          "The Song Remains The Same",
+          "No Quarter",
+          "Houses Of The Holy",
+          "Trampled Underfoot",
+          "Kashmir",
+          "Ten Years Gone",
+          "Achilles Last Stand",
+          "Nobody's Fault But Mine",
+          "All My Love",
+          "In The Evening"
+        ],
+        "description": "O lançamento Early Days and Latter Days é, na verdade, a junção de duas compilações de melhores momentos da banda, originalmente lançadas como volumes separados. O volume 1, Early Days, foi lançado em novembro de 1999 e focava na fase inicial da banda (1968-1971), cobrindo faixas dos quatro primeiros álbuns. O volume 2, Latter Days, lançado em novembro de 2000, abrangia o período posterior (1973-1980), com faixas dos álbuns restantes com músicas dos álbuns Houses of the Holy, Physical Graffiti, Presence e In Through the Out Door. Em 2002, ambos os volumes foram combinados em um único lançamento, proporcionando aos fãs uma visão abrangente da carreira do Led Zeppelin, desde seus primeiros dias até o final de sua jornada musical."
+      },
+      {
+        "album": "Mothership",
+        "year": 2007,
+        "tracks": [
+          "Good Times Bad Times",
+          "Communication Breakdown",
+          "Dazed And Confused",
+          "Babe I'm Gonna Leave You",
+          "Whole Lotta Love",
+          "Ramble On",
+          "Heartbreaker",
+          "Immigrant Song",
+          "Since I've Been Loving You",
+          "Rock And Roll",
+          "Black Dog",
+          "When The Levee Breaks",
+          "Stairway to Heaven",
+          "The Song Remains the Same",
+          "Over The Hills And Far Away",
+          "D'yer Mak'er",
+          "No Quarter",
+          "Trampled Under Foot",
+          "Houses Of The Holy",
+          "Kashmir",
+          "Nobody's Fault But Mine",
+          "Achilles Last Stand",
+          "In The Evening",
+          "All My Love"
+        ],
+        "description": "O Mothership, lançado em novembro de 2007, representa a coletânea definitiva e a mais vendida da carreira do Led Zeppelin, ideal para novos fãs e colecionadores. A compilação é um álbum duplo (dois CDs), totalizando 24 faixas. Uma versão de luxo popular também inclui um DVD com uma seleção de performances ao vivo icônicas da banda. A seleção das faixas foi feita pelos membros remanescentes da banda — Jimmy Page, Robert Plant e John Paul Jones — garantindo um repertório que eles consideravam essencial e representativo. Foi remasterizado digitalmente, sob a supervisão de Jimmy Page, utilizando os mais recentes avanços tecnológicos da época. A arte da capa apresenta o famoso dirigível Hindenburg em um campo de testes, uma imagem que se tornou imediatamente reconhecível e sinônimo da identidade visual da banda na era moderna."
+      }
+    ],
+    "perfis": {
+      "John Paul Jones": "John Baldwin, nascido em uma família de músicos, rapidamente se tornou um prodígio. Aos 14 anos, já era organista de igreja e baixista. Na vibrante cena londrina dos anos 60, antes de adotar o nome John Paul Jones, ele se estabeleceu como um dos mais requisitados arranjadores e músicos de estúdio, colaborando com artistas como The Rolling Stones, Donovan e Jeff Beck, construindo uma base técnica e teórica impecável.\n\nEm Led Zeppelin, Jones foi muito mais que o baixista; era a âncora musical e a arma secreta. Sua genialidade se manifestava em suas linhas de baixo melódicas e complexas, como em \"The Lemon Song\", e em seu domínio de múltiplos instrumentos, como os teclados em \"No Quarter\" e o bandolim em \"Going to California\". Ele era o arquiteto sônico que permitia a Page e Bonham explorarem os limites, provendo a base harmônica e rítmica fundamental.\n\nPara o álbum \"Led Zeppelin IV\", Jones escolheu um símbolo retirado de um livro sobre os Rosacruzes. A figura, um círculo que intercepta três vesica piscis, representa uma pessoa que possui confiança e competência. A simbologia reflete a capacidade de um indivíduo de exorcizar os maus espíritos através de sua habilidade e autoconfiança, uma perfeita alusão ao seu papel discreto, porém poderoso, dentro da banda.\n\nApós o fim do Led Zeppelin, John Paul Jones continuou sua prolífica carreira como produtor, arranjador e colaborador de diversos artistas. Sua versatilidade o levou a projetos ecléticos, desde a vanguarda com Diamanda Galás até o supergrupo de hard rock Them Crooked Vultures. Seu legado é o de um verdadeiro mestre da música, um gênio multi-instrumentista cuja influência e sofisticação técnica continuam a ser uma referência.",
+      "Jimmy Page": "James Patrick Page iniciou sua carreira como um prolífico músico de estúdio em Londres, gravando para inúmeros artistas. Sua transição para o estrelato começou com os Yardbirds, banda que lhe serviu de base para fundar o Led Zeppelin. Ao lado de Robert Plant, John Bonham e John Paul Jones, ele estabeleceu uma das formações mais poderosas da história do rock, redefinindo o som da época.\n\nComo guitarrista e produtor, Page foi o arquiteto sonoro do Led Zeppelin. Seu estilo é marcado por riffs pesados de blues, solos velozes e melódicos, e o uso de afinações alternativas. Inovador, ele popularizou técnicas como o uso do arco de violino na guitarra e do theremin em performances ao vivo. Sua produção meticulosa em estúdio moldou a paisagem sonora do rock pesado.\n\nNo álbum \"Led Zeppelin IV\", Page adotou um símbolo enigmático, frequentemente chamado de 'Zoso'. Embora sua origem exata e significado sejam guardados por Page, acredita-se que derive de um antigo grimório e represente o planeta Saturno, regente de seu signo, Capricórnio. O símbolo reflete seu profundo interesse pelo ocultismo e o esoterismo, permanecendo um ícone de mistério pessoal.\n\nO legado de Jimmy Page transcende o Led Zeppelin, consolidando-o como um dos guitarristas mais influentes da história. Ele redefiniu o papel do guitarrista como compositor, arranjador e produtor visionário. Sua fusão de blues, folk e hard rock criou um modelo seguido por incontáveis bandas, solidificando o alicerce para o heavy metal e o rock de arena.",
+      "John Bonham": "John Henry Bonham, nascido em Redditch, Inglaterra, foi a força motriz e o coração rítmico do Led Zeppelin. Autodidata, ele desenvolveu uma potência e um ataque lendários ainda na adolescência, tocando em bandas como a Band of Joy ao lado de Robert Plant. Sua entrada no Led Zeppelin, por sugestão de Plant a Jimmy Page, estabeleceu a fundação sonora que definiria o hard rock. A química entre os quatro membros foi instantânea, com a bateria de Bonham sendo o pilar central.\n\nO estilo de Bonham era uma fusão de poder avassalador, precisão técnica e um groove com profundas raízes no soul e no funk. Ele era famoso por seus bumbos de tamanho grande, seu pé direito incrivelmente rápido capaz de executar triplets complexos e sua habilidade de fazer a bateria soar como um instrumento solo. Sua performance na faixa \"When the Levee Breaks\" é um testamento de seu som monumental e inovador, tornando-se um dos ritmos mais icônicos e sampleados da história.\n\nO símbolo adotado por Bonham, três anéis interligados conhecidos como anéis borromeanos, foi retirado do \"Book of Signs\" de Rudolf Koch. Esta figura representa a trindade do pai, mãe e filho, refletindo a enorme importância que ele dava à sua família, sua esposa Pat e seu filho Jason. A escolha revelava um lado pessoal e devotado do músico, contrastando com sua imagem pública explosiva no palco.\n\nA vida de Bonham foi tragicamente interrompida em 1980, aos 32 anos. Sua morte levou ao fim imediato do Led Zeppelin, com os membros remanescentes declarando que a banda não poderia continuar sem ele, uma prova de sua importância insubstituível. Seu legado perdura como um dos maiores e mais influentes bateristas de todos os tempos, um padrão de excelência que inspira gerações de músicos até hoje.",
+      "Robert Plant": "Robert Anthony Plant, o icônico vocalista do Led Zeppelin, iniciou sua jornada musical imerso no blues e no rockabilly britânico. Antes da fama, ele integrou bandas como a Band of Joy, onde sua voz singular começou a chamar atenção. Recrutado por Jimmy Page, sua performance explosiva e presença de palco carismática se tornaram a alma da banda, definindo o arquétipo do frontman de rock e levando o grupo a um estrelato meteórico e duradouro.\n\nSua técnica vocal é uma das mais influentes da história, caracterizada por um alcance vasto e agudos lancinantes que se tornaram sua assinatura. Plant combinava a agressividade dos cantores de blues com uma sensibilidade melódica única, alternando entre gritos viscerais, como em \"Immigrant Song\", e sussurros delicados. Sua habilidade de improvisar com gemidos e frases vocais transformou a voz em um instrumento tão potente quanto a guitarra.\n\nO símbolo adotado por Plant, uma pena dentro de um círculo, é derivado dos escritos sobre a civilização perdida de Mu. A pena representa Ma'at, a deusa egípcia da verdade, da justiça e do equilíbrio. Para o vocalista, o emblema simboliza a integridade e a filosofia de um guerreiro espiritual, refletindo seu profundo interesse por mitologia, história antiga e misticismo, temas recorrentes em suas letras.\n\nCom o fim do Led Zeppelin, Plant embarcou em uma carreira solo eclética e aclamada, distanciando-se deliberadamente do som que o consagrou. Ele explorou a world music, o folk e o bluegrass, demonstrando uma notável versatilidade artística. O sucesso de projetos como o álbum \"Raising Sand\", com Alison Krauss, reafirmou seu status não apenas como uma lenda do passado, mas como um músico relevante e em constante reinvenção."
+    }
+  }
+}
