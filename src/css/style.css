@@ -542,40 +542,6 @@ adding-left/right of 0 */
   }
 }
 
-.section-title {
-  text-align: center;
-  line-height: clamp(
-    1rem,
-    2vw,
-    24px
-  ); /* altura da linha com limite máximo de 24px */
-  font-family: var(--font-header);
-  font-size: 1.5rem;
-  letter-spacing: 0.2rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-bottom: var(
-    --section-title-gap
-  ); /* espaçamento controlado por --section-title-gap */
-}
-.section-subtitle {
-  text-align: center;
-  margin-top: 0; /* garante distância exata de 2px em conjunto com margin-bottom 
-do título */
-  line-height: clamp(
-    22px,
-    2vw,
-    24px
-  ); /* altura da linha mínima 22px e máxima 24px */
-  font-family: var(--font-header);
-  font-size: 20px; /* tamanho da fonte atualizado */
-  letter-spacing: 0.2rem;
-  font-weight: bold;
-  color: var(--zzmetal);
-  text-shadow: var(--zzcream) 1.5px 1.5px 1.5px;
-  margin-bottom: 2rem; /* restaurado */
-}
-
 /* Círculo principal */
 .timeline-circle {
   position: relative;
@@ -692,60 +658,6 @@ do título */
 .album-content-inner li {
   margin-bottom: 0.5rem;
   font-size: 1rem;
-}
-
-/* CARD CONTENT */
-
-.card-content-split {
-  display: flex;
-  flex-direction: column; /* Manter coluna como padrão para mobile */
-  gap: 1.5rem; /* Aumentar um pouco o gap */
-}
-
-.left-side,
-.right-side {
-  text-align: left;
-}
-
-/* ARTICLE CONTENT */
-
-article {
-  margin-top: 15px;
-  /* max-height: 580px; */
-  /* overflow-y: scroll; */
-  border: 5px solid var(--secondary-color);
-  padding: 2rem 2rem;
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-  box-shadow: none;
-  transition: background-color 0.3s ease;
-}
-
-article:hover {
-  background-color: var(--bg-color);
-}
-
-article h2 {
-  margin-top: 0;
-  font-family: "Cinzel Decorative", sans-serif;
-  font-weight: 600;
-  font-size: 1.8rem;
-  border-bottom: none;
-  padding-bottom: 0;
-  margin-bottom: 0.25rem;
-  color: var(--primary-color);
-}
-
-article p {
-  margin: 0.5rem 0;
-  line-height: 1.6;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: rgba(191, 184, 166, 0.9);
-}
-
-article ul li {
-  font-size: 1.2rem;
 }
 
 /* CARD CONTENT */
