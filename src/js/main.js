@@ -1,6 +1,6 @@
 // src/js/main.js
 // import { search } from "./search.js";
-// import { setupTimeline } from "./timeline.js";
+import { setupTimeline } from "./timeline.js";
 import { fetchLocalData } from "./api.js";
 import {
   renderHistory,
@@ -67,7 +67,7 @@ export async function renderInitialPageContent() {
   `;
 
   // Re-inicializa componentes e busca dados
-  // await setupTimeline();
+  await setupTimeline();
   adjustScrollMargin();
   setupScrollAnimations();
 
