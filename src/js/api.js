@@ -1,0 +1,28 @@
+// src/js/api.js
+
+/**
+ * Busca a história da banda no servidor backend.
+ * @returns {Promise<string>} O texto da história.
+ */
+export async function fetchHistory() {
+  const data = await fetchLocalData(); // Now fetchLocalData returns the entire led_zeppelin object
+  return data.historia; // Access the historia property
+}
+
+/**
+ * Busca os dados dos álbuns do arquivo JSON local.
+ * @returns {Promise<Array>} Uma matriz de objetos de álbuns.
+ */
+export async function fetchLocalData() {
+  try {
+    const response = await fetch("data.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const jsonData = await response.json();
+    return jsonData.led_zeppelin; // Retorna o objeto principal led_zeppelin
+  } catch (error) {
+    console.error("Erro ao carregar dados locais:", error);
+    return null; // Retorna nulo em caso de erro
+  }
+}

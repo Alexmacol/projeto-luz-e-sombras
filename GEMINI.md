@@ -1,31 +1,48 @@
 # Projeto Luz e Sombra (Led Zeppelin Tribute)
 
 ## Visão Geral
-Este projeto é um website tributo à banda Led Zeppelin, intitulado "Light and Shade". O site é estruturado como uma *Single Page Application* (SPA) estática, apresentando seções de História, Perfis dos Membros, Discografia e uma Linha do Tempo.
+
+Este projeto é um website tributo à banda Led Zeppelin, intitulado "Light and Shade". O site é estruturado como uma _Single Page Application_ (SPA) estática, apresentando seções de História, Perfis dos Membros, Discografia e uma Linha do Tempo.
 
 ## Arquitetura e Tecnologias
 
 ### Front-end
+
 - **HTML5:** Utiliza tags semânticas (`<header>`, `<main>`, `<section>`, `<article>`) para estruturar o conteúdo.
-- **CSS3:** 
+- **CSS3:**
   - **Variáveis CSS (`:root`):** Gerenciamento centralizado de cores (temas dourado/escuro) e tipografia.
-  - **Organização:** 
+  - **Organização:**
     - `src/css/style.css`: Estilos base, reset, tipografia e componentes visuais.
-    - `src/css/responsive.css`: *Media queries* para adaptação em telas maiores (tablets e desktops), seguindo uma abordagem *mobile-first* implícita.
+    - `src/css/responsive.css`: _Media queries_ para adaptação em telas maiores (tablets e desktops), seguindo uma abordagem _mobile-first_ implícita.
   - **Fontes:** Integração com Google Fonts (Cinzel, Lora, Quicksand, Young Serif).
 - **JavaScript (ES Modules):**
+  - **Dados:** O conteúdo textual (história, perfis, discografia) é carregado a partir de um arquivo `data.json`.
   - O projeto está configurado para usar módulos ES (`<script type="module" src="src/js/main.js">`).
-  - *Nota:* O arquivo `src/js/main.js` é referenciado no HTML mas não foi encontrado na árvore de arquivos atual. A lógica de preenchimento dinâmico (cards de história, discografia) deve residir lá.
+  - **Modularização:**
+    - `main.js`: Controlador principal, inicialização e gestão de eventos globais.
+    - `api.js`: Camada de serviço para abstração da busca de dados.
+    - `ui.js`: Responsável pela manipulação do DOM e renderização (View).
+    - `timeline.js`: Lógica específica para a interatividade da linha do tempo circular.
+    - `search.js`: Implementação da funcionalidade de busca e filtro.
+    - `animations.js`: Gerenciamento de animações de entrada via Intersection Observer.
 
 ## Estrutura de Diretórios
 
 ```text
 C:\Users\alexm\projetos\projeto-luzesombra\
+├── data.json               # Base de dados (textos, álbuns, timeline)
 ├── index.html              # Ponto de entrada da aplicação
 └── src\
     ├── css\
     │   ├── style.css       # Estilos globais e componentes
-    │   └── responsive.css  # Ajustes de layout para telas >768px e >1024px
+    │   └── responsive.css  # Ajustes de layout para telas maiores
+    ├── js\
+    │   ├── main.js
+    │   ├── api.js
+    │   ├── ui.js
+    │   ├── timeline.js
+    │   ├── search.js
+    │   └── animations.js
     └── images\             # Assets gráficos (SVGs dos símbolos, WebP)
 ```
 
