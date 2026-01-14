@@ -122,7 +122,7 @@ button {
   color: var(--zzmetal);
   font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 0,0625rem;
+  letter-spacing: 0, 0625rem;
   text-transform: uppercase;
   text-shadow: var(--zzcream) 1px 1px 1px;
   transition: color 0.4s ease;
@@ -269,8 +269,8 @@ button {
 /* CLOSE SEARCH BUTTON */
 .close-search-container {
   display: flex;
-  justify-content: center; 
-  margin-top: 3rem; 
+  justify-content: center;
+  margin-top: 3rem;
   margin-bottom: 3rem;
 }
 
@@ -327,26 +327,19 @@ button {
 
 .section-title {
   text-align: center;
-  line-height: clamp(
-    1rem, /* altura minima */
-    2vw,
-    1.5rem /* altura maxima */
-  ); 
+  line-height: clamp(1rem, /* altura minima */ 2vw, 1.5rem /* altura maxima */);
   font-family: var(--font-header);
   font-size: 1.5rem;
   letter-spacing: 0.2rem;
   font-weight: bold;
   color: var(--primary-color);
-  margin-bottom: var(
-    --section-title-gap
-  );
+  margin-bottom: var(--section-title-gap);
 }
 .section-subtitle {
   text-align: center;
-  margin-top: 0; 
+  margin-top: 0;
   line-height: clamp(
-    1.375rem /* altura minima */
-    2vw,
+    1.375rem /* altura minima */ 2vw,
     1.5rem /* altura maxima */
   );
   font-family: var(--font-header);
@@ -488,10 +481,10 @@ adding-left/right of 0 */
   padding: 0 1.5rem; /* Adiciona padding lateral */
 }
 
-/* Profile specific styles */
+/* Profile specific styles 
 .profile-item .accordion-name {
-  /* Specific styles if needed */
-}
+   Specific styles if needed 
+} */
 
 .profile-content-inner {
   padding: 2rem;
@@ -503,6 +496,12 @@ adding-left/right of 0 */
 
 .profile-content-inner br {
   display: block;
+}
+
+.profile-header-symbol {
+  height: 2rem;
+  width: auto;
+  margin-right: 1rem;
 }
 
 /*Seção Discografia*/

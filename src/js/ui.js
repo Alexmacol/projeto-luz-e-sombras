@@ -216,12 +216,15 @@ export function renderSongs(container, data) {
               if (!profileText) return;
           
               const displayName = displayNames[memberName] || memberName;
-          
+
+              const symbolFilename = memberName.toLowerCase().replace(/\s+/g, "-");
+
               const profileItem = document.createElement("div");
               profileItem.className = "accordion-item profile-item"; // Added accordion-item class
           
               profileItem.innerHTML = `
                 <button class="accordion-header profile-header" aria-expanded="false" aria-controls="profile-content-${memberName.replace(/\s+/g, "-")}">
+                <img src="src/images/${symbolFilename}.svg" alt="Símbolo de ${memberName}" class="profile-header-symbol">
                   <span class="accordion-name profile-name">${displayName}</span>
                   <span class="accordion-toggle-btn profile-toggle-btn">+</span>
                 </button>
