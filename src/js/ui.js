@@ -246,4 +246,134 @@ export function renderSongs(container, data) {
           
             container.appendChild(fragment);
           }
-          
+
+/**
+ * Renderiza os resultados da busca.
+ * @param {HTMLElement} container
+ * @param {Object} results
+ * @param {string} query
+ */
+export function renderSearchResults(container, results, query) {
+  clearContainer(container);
+
+  const fragment = document.createDocumentFragment();
+  const wrapper = document.createElement("div");
+  wrapper.className = "interface";
+  wrapper.style.paddingTop = "2rem";
+  wrapper.style.paddingBottom = "2rem";
+
+  // Título
+  const title = document.createElement("h2");
+  title.className = "section-title";
+  title.textContent = `Resultados para "${query}"`;
+  wrapper.appendChild(title);
+
+  let hasResults = false;
+
+  // História
+  if (results.history) {
+    hasResults = true;
+    const subTitle = document.createElement("h3");
+    subTitle.className = "section-subtitle";
+    subTitle.textContent = results.history.title;
+    wrapper.appendChild(subTitle);
+
+    const card = document.createElement("article");
+    card.innerHTML = `<p>${results.history.content.replace(/\n/g, "<br>")}</p>`;
+    wrapper.appendChild(card);
+  }
+
+  // Perfis
+  if (results.profiles && Object.keys(results.profiles).length > 0) {
+    hasResults = true;
+    const subTitle = document.createElement("h3");
+    subTitle.className = "section-subtitle";
+    subTitle.textContent = "Perfis";
+    wrapper.appendChild(subTitle);
+
+    for (const [name, content] of Object.entries(results.profiles)) {
+      const card = document.createElement("article");
+      card.innerHTML = `
+        <h4 style="color: var(--primary-color); margin-top: 0; font-size: 1.2rem;">${name}</h4>
+        <p>${content.replace(/\n/g, "<br>")}</p>
+      `;
+      wrapper.appendChild(card);
+    }
+  }
+
+  // Discografia
+  if (results.albums && results.albums.length > 0) {
+    hasResults = true;
+    const subTitle = document.createElement("h3");
+    subTitle.className = "section-subtitle";
+    subTitle.textContent = "Discografia";
+    wrapper.appendChild(subTitle);
+
+    results.albums.forEach((album) => {
+      const card = document.createElement("article");
+      card.innerHTML = `
+        <h4 style="color: var(--primary-color); margin-top: 0; font-size: 1.2rem;">${album.album} (${album.year})</h4>
+        <p>${album.description}</p>
+        <p><strong>Faixas:</strong></p>
+        <ul>
+          ${album.tracks.map((track) => `<li>${track}</li>`).join("")}
+        </ul>
+      `;
+      wrapper.appendChild(card);
+    });
+  }
+
+  // Shows
+  if (results.shows && results.shows.length > 0) {
+    hasResults = true;
+    const subTitle = document.createElement("h3");
+    subTitle.className = "section-subtitle";
+    subTitle.textContent = "Shows Icônicos";
+    wrapper.appendChild(subTitle);
+
+    results.shows.forEach((show) => {
+      const card = document.createElement("article");
+      card.innerHTML = `
+        <h4 style="color: var(--primary-color); margin-top: 0; font-size: 1.2rem;">${show.data} — ${show.local}</h4>
+        <p>${show.contexto}</p>
+        <p><strong>Setlist:</strong></p>
+        <ul>
+          ${show.setlist.map((song) => `<li>${song}</li>`).join("")}
+        </ul>
+      `;
+      wrapper.appendChild(card);
+    });
+  }
+
+  // Timeline
+  if (results.timeline && results.timeline.length > 0) {
+    hasResults = true;
+    const subTitle = document.createElement("h3");
+    subTitle.className = "section-subtitle";
+    subTitle.textContent = "Linha do Tempo";
+    wrapper.appendChild(subTitle);
+
+    results.timeline.forEach((item) => {
+      const card = document.createElement("article");
+      card.innerHTML = `
+        <h4 style="color: var(--primary-color); margin-top: 0; font-size: 1.2rem;">${item.year}</h4>
+        <div>${item.text}</div>
+      `;
+      wrapper.appendChild(card);
+    });
+  }
+
+  if (!hasResults) {
+    renderError(wrapper, "Nenhum resultado encontrado.");
+  }
+
+  // Botão Voltar
+  const closeButtonContainer = document.createElement("div");
+  closeButtonContainer.className = "close-search-container";
+  closeButtonContainer.innerHTML = `<button id="close-search-btn" class="close-search-btn">Voltar</button>`;
+  wrapper.appendChild(closeButtonContainer);
+
+  fragment.appendChild(wrapper);
+  container.appendChild(fragment);
+}
+

@@ -123,7 +123,7 @@ async function updateProfiles() {
  */
 async function updateShows() {
   const prompt = `
-  Atue como um historiador do rock clássico especialista em Led Zeppelin. Identifique os 10 shows mais icônicos, influentes e historicamente relevantes da banda Led Zeppelin. Desde o início de sua carreira em 1968 até suas últimas apresentações.
+  Atue como um historiador do rock clássico especialista em Led Zeppelin. Identifique os shows mais icônicos, influentes e historicamente relevantes da banda Led Zeppelin. Desde o início de sua carreira em 1968 até suas últimas apresentações.
 
 Para cada show, forneça as informações estritamente no formato JSON, seguindo esta estrutura de campos:
 
@@ -142,6 +142,10 @@ Retorne apenas o objeto JSON (uma lista de objetos).
 Não inclua introduções, explicações ou textos fora do JSON.
 
 Certifique-se de incluir eventos fundamentais como o Royal Albert Hall (1970), Madison Square Garden (1973), Earls Court (1975), Knebworth (1979) e o Celebration Day (2007).
+
+Certifique-se de que os shows sejam apresentados em ordem cronológica.
+
+Certifique-se de que a palavra show ou shows estejam presentes em todos os resultados
 
     IMPORTANTE: A resposta deve ser estritamente um ARRAY JSON válido.
     Não use Markdown. Não use blocos de código (\`\`\`).

@@ -26,7 +26,7 @@ export async function search(query) {
   const mainContent = document.querySelector(".main-content");
 
   if (!query || query.trim() === "") {
-    // Restaura o estado inicial recarregando a página. É a abordagem mais simples dada a estrutura atual.
+    // Restaura o estado inicial recarregando a página.
     return;
   }
 
@@ -46,9 +46,10 @@ export async function search(query) {
     timeline: [],
     albums: [],
     profiles: {},
+    shows: [],
   };
 
-  // Lógica da busca
+  // Lógica da busca - História
   if (data.historia && data.historia.toLowerCase().includes(lowerCaseQuery)) {
     results.history = {
       title: "História",
@@ -56,6 +57,7 @@ export async function search(query) {
     };
   }
 
+  // Lógica da busca - Timeline
   results.timeline = data.timeline
     .filter(
       (item) =>
@@ -68,6 +70,7 @@ export async function search(query) {
       text: highlight(item.text, query),
     }));
 
+  // Lógica da busca - Álbuns
   results.albums = data.albuns
     .filter(
       (album) =>
@@ -85,6 +88,7 @@ export async function search(query) {
       tracks: album.tracks.map((track) => highlight(track, query)),
     }));
 
+  // Lógica da busca - Perfis
   const foundProfiles = {};
   for (const member in data.perfis) {
     if (
@@ -95,6 +99,26 @@ export async function search(query) {
     }
   }
   results.profiles = foundProfiles;
+
+  // Lógica da busca - Shows
+  if (data.shows) {
+    results.shows = data.shows
+      .filter(
+        (show) =>
+          show.data.toLowerCase().includes(lowerCaseQuery) ||
+          show.local.toLowerCase().includes(lowerCaseQuery) ||
+          show.contexto.toLowerCase().includes(lowerCaseQuery) ||
+          show.setlist.some((song) =>
+            song.toLowerCase().includes(lowerCaseQuery)
+          )
+      )
+      .map((show) => ({
+        ...show,
+        local: highlight(show.local, query),
+        contexto: highlight(show.contexto, query),
+        setlist: show.setlist.map((song) => highlight(song, query)),
+      }));
+  }
 
   renderSearchResults(mainContent, results, query);
 }

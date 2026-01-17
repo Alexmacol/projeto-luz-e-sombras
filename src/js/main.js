@@ -1,5 +1,5 @@
 // src/js/main.js
-// import { search } from "./search.js";
+import { search } from "./search.js";
 import { setupTimeline } from "./timeline.js";
 import { fetchLocalData } from "./api.js";
 import {
@@ -126,14 +126,30 @@ function setupSearchHandlers() {
   const searchButton = document.querySelector(".search-button");
   const tags = document.querySelectorAll(".tag");
 
-  const triggerSearch = () => {
+  const triggerSearch = async () => {
     const query = searchInput.value;
     // Se a busca for vazia, restaura o conteúdo em vez de recarregar
     if (!query || query.trim() === "") {
-      renderInitialPageContent();
+      await renderInitialPageContent();
     } else {
-      // search(query);
-      console.warn("Funcionalidade de busca pendente (search.js não criado)");
+      await search(query);
+
+      // Scroll suave para os resultados
+      const mainContent = document.querySelector(".main-content");
+      const header = document.querySelector(".header");
+
+      if (mainContent && header) {
+        const headerHeight = header.offsetHeight;
+        // Calcula a posição do topo do mainContent menos a altura do header
+        const elementPosition =
+          mainContent.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
@@ -157,6 +173,48 @@ function setupSearchHandlers() {
       searchInput.value = btn.textContent;
       searchInput.focus();
       triggerSearch();
+    });
+  });
+}
+
+/**
+ * Configura os manipuladores de navegação para garantir que o site funcione
+ * mesmo quando os resultados da busca estão visíveis (o que remove as seções originais).
+ */
+function setupNavigationHandlers() {
+  const navLinks = document.querySelectorAll(".nav-desktop a");
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", async (event) => {
+      const href = link.getAttribute("href");
+
+      // Apenas processa links internos (âncoras)
+      if (href && href.startsWith("#")) {
+        event.preventDefault();
+
+        // Verifica se estamos no "modo busca" (se as seções originais não existem)
+        const isSearchMode = !document.getElementById("history");
+
+        if (isSearchMode) {
+          // Limpa o input de busca para refletir o reset
+          const searchInput = document.getElementById("siteSearch");
+          if (searchInput) searchInput.value = "";
+
+          // Restaura o conteúdo original
+          await renderInitialPageContent();
+        }
+
+        // Realiza o scroll para o alvo
+        if (href === "#") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          const targetId = href.substring(1); // Remove o '#'
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
     });
   });
 }
@@ -203,6 +261,8 @@ function setupCloseSearchListener() {
         searchInput.value = ""; // Clear the search input
       }
       renderInitialPageContent();
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
 }
@@ -211,6 +271,7 @@ function setupCloseSearchListener() {
 async function initialize() {
   await renderInitialPageContent();
   setupSearchHandlers();
+  setupNavigationHandlers(); // Inicializa os handlers de navegação inteligentes
   setupMobileMenu();
   setupCloseSearchListener(); // Configura o listener para o botão de fechar
 }
