@@ -79,15 +79,15 @@ export async function renderInitialPageContent() {
     console.error("Erro crítico ao carregar dados locais:", error);
     renderError(
       document.querySelector(".history-wrapper"),
-      "Falha ao carregar dados."
+      "Falha ao carregar dados.",
     );
     renderError(
       document.querySelector(".profiles-wrapper"),
-      "Falha ao carregar dados."
+      "Falha ao carregar dados.",
     );
     renderError(
       document.querySelector(".discography-wrapper"),
-      "Falha ao carregar dados."
+      "Falha ao carregar dados.",
     );
     return;
   }
@@ -267,6 +267,15 @@ function setupCloseSearchListener() {
   });
 }
 
+// Configura um observador para ajustar o scroll margin sempre que o header mudar de tamanho
+function setupHeaderObserver() {
+  const header = document.querySelector(".header");
+  if (header) {
+    const observer = new ResizeObserver(() => adjustScrollMargin());
+    observer.observe(header);
+  }
+}
+
 // Função de inicialização principal
 async function initialize() {
   await renderInitialPageContent();
@@ -274,8 +283,8 @@ async function initialize() {
   setupNavigationHandlers(); // Inicializa os handlers de navegação inteligentes
   setupMobileMenu();
   setupCloseSearchListener(); // Configura o listener para o botão de fechar
+  setupHeaderObserver(); // Inicia o monitoramento do tamanho do header
 }
 
 // Inicia a aplicação e ajusta o layout
 document.addEventListener("DOMContentLoaded", initialize);
-window.addEventListener("resize", adjustScrollMargin);

@@ -377,3 +377,43 @@ export function renderSearchResults(container, results, query) {
   container.appendChild(fragment);
 }
 
+/**
+ * Renderiza a timeline como um accordion (para dispositivos móveis).
+ * @param {HTMLElement} container
+ * @param {Array} timelineData
+ */
+export function renderTimelineMobile(container, timelineData) {
+  clearContainer(container);
+  const fragment = document.createDocumentFragment();
+
+  timelineData.forEach((item, index) => {
+    // Clean year string for ID usage if necessary, though index is safer here
+    const itemId = `timeline-mobile-${index}`;
+
+    const timelineItem = document.createElement("div");
+    timelineItem.className = "accordion-item timeline-item-mobile";
+
+    timelineItem.innerHTML = `
+      <button class="accordion-header timeline-header-mobile" aria-expanded="false" aria-controls="content-${itemId}">
+        <span class="accordion-name">${item.year}</span>
+        <span class="accordion-toggle-btn">+</span>
+      </button>
+      <div class="accordion-content" id="content-${itemId}">
+        <div class="profile-content-inner"> <!-- Reusing profile-content-inner for padding/style -->
+          ${item.text}
+        </div>
+      </div>
+    `;
+
+    const header = timelineItem.querySelector(".accordion-header");
+    const content = timelineItem.querySelector(".accordion-content");
+    const buttonText = timelineItem.querySelector(".accordion-toggle-btn");
+
+    setupAccordionToggle(header, content, buttonText, timelineItem);
+
+    fragment.appendChild(timelineItem);
+  });
+
+  container.appendChild(fragment);
+}
+

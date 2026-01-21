@@ -49,3 +49,31 @@
     width: 66.666667%;
   }
 }
+
+/* Timeline Responsive Logic */
+@media (max-width: 479px) {
+  .timeline-circle {
+    display: none !important;
+  }
+
+  .timeline-mobile-view {
+    display: block;
+    width: 100%;
+  }
+
+  /* Ensure timeline items match other accordions */
+  .timeline-item-mobile {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 480px) {
+  .timeline-mobile-view {
+    display: none !important;
+  }
+
+  .timeline-circle {
+    display: block; /* Restores original display */
+  }
+}

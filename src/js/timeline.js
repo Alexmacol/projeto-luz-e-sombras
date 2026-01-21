@@ -1,12 +1,27 @@
 import { fetchLocalData } from "./api.js"; // Importar para buscar os dados
+import { renderTimelineMobile } from "./ui.js";
 
 export async function setupTimeline() {
   const points = document.querySelectorAll(".timeline-point");
   const center = document.getElementById("timelineCenter");
+  const container = document.querySelector(".timeline-container");
+
+  // Cria container móvel se não existir
+  let mobileContainer = container.querySelector(".timeline-mobile-view");
+  if (!mobileContainer) {
+    mobileContainer = document.createElement("div");
+    mobileContainer.className = "timeline-mobile-view";
+    container.appendChild(mobileContainer);
+  }
 
   // Fetch timeline data from data.json
   const data = await fetchLocalData();
   const timelineData = data.timeline; // Corrected access
+
+  // Renderiza a versão mobile
+  if (timelineData) {
+    renderTimelineMobile(mobileContainer, timelineData);
+  }
 
   const radius = 200;
   const centerX = 200;
@@ -54,3 +69,4 @@ export async function setupTimeline() {
     });
   });
 }
+
