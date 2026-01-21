@@ -210,8 +210,17 @@ function setupNavigationHandlers() {
         } else {
           const targetId = href.substring(1); // Remove o '#'
           const targetSection = document.getElementById(targetId);
+          
           if (targetSection) {
-            targetSection.scrollIntoView({ behavior: "smooth" });
+            const header = document.querySelector(".header");
+            const headerHeight = header ? header.offsetHeight : 0;
+            const elementPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerHeight;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
           }
         }
       }
