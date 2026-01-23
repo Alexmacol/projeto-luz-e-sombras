@@ -5,8 +5,8 @@
  * @returns {Promise<string>} O texto da história.
  */
 export async function fetchHistory() {
-  const data = await fetchLocalData(); // Now fetchLocalData returns the entire led_zeppelin object
-  return data.historia; // Access the historia property
+  const data = await fetchLocalData(); // O resultado do fetchLocalData retorna o objeto led_zeppelin
+  return data.historia; // Acessa a propriedade historia do objeto led_zeppelin
 }
 
 /**

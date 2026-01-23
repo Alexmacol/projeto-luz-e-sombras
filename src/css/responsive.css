@@ -1,8 +1,8 @@
 /* =========================================
-   RESPONSIVE (DESKTOP/TABLET OVERRIDES)
-   Strategy: Mobile First
-   Base styles are in style.css (for mobile).
-   These rules apply ONLY when screen gets larger.
+   RESPONSIVE (DESKTOP/TABLET)
+   Formato base: Mobile First
+   Estilo base: style.css (mobile).
+   Regras para telas maiores que 768px (tablet e desktop).
    ========================================= */
 
 /* Tablet & Desktop (>= 768px) */
@@ -12,13 +12,13 @@
     padding-right: 2.5rem;
   }
 
-  /* Typography Scaling */
+  /* Aumenta a fonte */
   .hero h1 {
     font-size: 3.75rem;
     line-height: 1;
   }
 
-  /* Navigation: Show Desktop, Hide Mobile Button */
+  /* Navegação: Exibe Desktop, Esconde o Mobile Button */
   .nav-desktop {
     display: flex;
   }
@@ -27,12 +27,12 @@
     display: none;
   }
 
-  /* Search Bar Sizing */
+  /* Tamanho da Barra de Busca */
   .search-wrapper {
     width: 75%;
   }
 
-  /* Accordion Layout: Switch to Row (Side-by-Side) */
+  /* Layout Acordeon: Switch to Row (Side-by-Side) */
   .card-content-split {
     flex-direction: row;
     justify-content: space-between;
@@ -55,8 +55,8 @@
   }
 }
 
-/* Timeline Layout Change (>= 480px) */
-/* Switches from Accordion List to Circle View */
+/* Altera o Layout do Timeline (>= 480px) */
+/* Altera de acordeão para círculo */
 @media screen and (min-width: 480px) {
   .timeline-mobile-view {
     display: none !important;
