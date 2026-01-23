@@ -1,79 +1,68 @@
-@media (min-width: 768px) {
+/* =========================================
+   RESPONSIVE (DESKTOP/TABLET OVERRIDES)
+   Strategy: Mobile First
+   Base styles are in style.css (for mobile).
+   These rules apply ONLY when screen gets larger.
+   ========================================= */
+
+/* Tablet & Desktop (>= 768px) */
+@media screen and (min-width: 768px) {
   .container {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
 
-  .nav-desktop {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
-  .mobile-btn {
-    display: none;
-  }
-
-  .nav-mobile {
-    display: none;
-  }
-
+  /* Typography Scaling */
   .hero h1 {
     font-size: 3.75rem;
     line-height: 1;
   }
 
+  /* Navigation: Show Desktop, Hide Mobile Button */
+  .nav-desktop {
+    display: flex;
+  }
+
+  header .menu-mobile__btn {
+    display: none;
+  }
+
+  /* Search Bar Sizing */
   .search-wrapper {
     width: 75%;
   }
 
+  /* Accordion Layout: Switch to Row (Side-by-Side) */
   .card-content-split {
-    flex-direction: row; /* Mantém linha para telas maiores */
-    justify-content: space-between; /* Alinhar os itens */
-    gap: 2rem; /* Aumentar o gap para telas maiores */
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
   }
 
   .card-content-split .left-side {
-    flex-basis: 55%; /* Lado esquerdo ocupa 55% */
+    flex-basis: 55%;
   }
 
   .card-content-split .right-side {
-    flex-basis: 40%; /* Lado direito ocupa 40% */
+    flex-basis: 40%;
   }
 }
 
-@media (min-width: 1024px) {
+/* Large Desktop (>= 1024px) */
+@media screen and (min-width: 1024px) {
   .search-wrapper {
     width: 66.666667%;
   }
 }
 
-/* Timeline Responsive Logic */
-@media (max-width: 479px) {
-  .timeline-circle {
+/* Timeline Layout Change (>= 480px) */
+/* Switches from Accordion List to Circle View */
+@media screen and (min-width: 480px) {
+  .timeline-mobile-view {
     display: none !important;
   }
 
-  .timeline-mobile-view {
+  .timeline-circle {
     display: block;
-    width: 100%;
-  }
-
-  /* Ensure timeline items match other accordions */
-  .timeline-item-mobile {
-    margin-bottom: 1rem;
-    width: 100%;
-  }
-}
-
-@media (min-width: 480px) {
-  .timeline-mobile-view {
-    display: none !important;
-  }
-
-  .timeline-circle {
-    display: block; /* Restores original display */
   }
 }

@@ -1,3 +1,7 @@
+/* src/css/styles.css */
+/* 
+Mobile First CSS Stylesheet for Zeppelin Fan Site 
+*/
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
@@ -10,11 +14,10 @@
   --bg-color: #0a0a0a;
   --bg-cta-accent: #7a0a0a;
   --bg-main: #0f1724;
-  --bg-shade-light: #0b0b0b; /* Very dark gray for subtle section contrast */
+  --bg-shade-light: #0b0b0b; /* dark gray */
   --header-height: 3rem;
   --header-footer-line: #3c4043;
   --zzcream: #f3e6d8;
-  --zzrose: #7b284f; /* dark rose */
   --zzmetal: #4a4a4a; /* gray */
   --font-display: "Young Serif", serif;
   --font-body: Lora, sans-serif;
@@ -36,6 +39,10 @@ body {
   margin: 0;
 }
 
+.no-overflow {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -54,9 +61,9 @@ button {
 }
 
 .transition {
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-    backdrop-filter;
+  transition-property:
+    color, background-color, border-color, text-decoration-color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -89,7 +96,9 @@ button {
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--header-footer-line);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .header-content {
@@ -132,7 +141,11 @@ button {
   color: var(--zzcream);
 }
 
-/* NAVIGATION */
+/* NAVIGATION (Desktop) */
+.nav-desktop {
+  display: none;
+}
+
 .nav-desktop ul {
   display: flex;
   align-items: center;
@@ -152,6 +165,88 @@ button {
 
 .nav-desktop ul li a:hover {
   color: var(--zzcream);
+}
+
+/* MENU MOBILE (Mobile First: Visible by default) */
+header .menu-mobile__btn {
+  display: block;
+  position: relative;
+  z-index: 500;
+}
+
+header .menu-mobile__btn div {
+  background-color: var(--primary-color);
+  height: 3px;
+  margin: 5px 0;
+  transition: var(--transition-duration) ease-in-out;
+}
+
+header .menu-mobile__btn .menu-mobile__line1 {
+  width: 30px;
+}
+
+header .menu-mobile__btn .menu-mobile__line2 {
+  width: 25px;
+}
+
+header.rolagem .menu-mobile__btn div {
+  background-color: var(--bg-color);
+}
+
+header .menu-mobile__btn .menu-mobile__line1.--ativo1 {
+  transform: rotate(45deg) translate(17%);
+  background-color: var(--primary-color);
+}
+
+header .menu-mobile__btn .menu-mobile__line2.--ativo2 {
+  width: 30px;
+  transform: rotate(-45deg) translate(17%);
+  background-color: var(--primary-color);
+}
+
+header .menu__mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background-color: var(--bg-color);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+header .menu__mobile ul.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header .menu__mobile nav {
+  width: 100%;
+}
+
+header .menu__mobile nav a {
+  color: var(--primary-color);
+  font-size: 26px;
+  display: block;
+  padding: 20px 0;
+  transition: 0.5s;
+}
+
+header .menu__mobile nav a:hover {
+  background-color: var(--bg-color);
+  color: var(--zzcream);
+  box-shadow: 0 0 20px var(--bg-shade-light);
+}
+
+header .menu__mobile.abrir {
+  width: 100%;
+  height: 100vh;
 }
 
 /* WATERMARK */
@@ -275,18 +370,18 @@ button {
 }
 
 .close-search-btn {
-  background-color: var(--bg-cta-accent); /* Use accent color */
-  border-radius: 9999px; /* Fully rounded corners */
-  padding: 0.75rem 2rem; /* More padding for a prominent button */
+  background-color: var(--bg-cta-accent); 
+  border-radius: 9999px; 
+  padding: 0.75rem 2rem;
   border: none;
-  color: var(--zzcream); /* Cream text color */
+  color: var(--zzcream);
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: bold; /* Make text bold */
+  font-weight: bold;
   cursor: pointer;
-  transition: filter 0.3s ease; /* Hover effect */
-  text-align: center; /* Center text within the button */
-  display: inline-block; /* Ensure padding and width work as expected */
+  transition: filter 0.3s ease;
+  text-align: center;
+  display: inline-block;
 }
 
 .close-search-btn:hover {
@@ -311,7 +406,9 @@ button {
   line-height: 1.25rem;
   color: var(--zzcream);
   border: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .tag:hover,
@@ -343,19 +440,21 @@ button {
     1.5rem /* altura maxima */
   );
   font-family: var(--font-header);
-  font-size: 20px; /* tamanho da fonte atualizado */
+  font-size: 20px;
   letter-spacing: 0.2rem;
   font-weight: bold;
   color: var(--zzmetal);
   text-shadow: var(--zzcream) 1.5px 1.5px 1.5px;
-  margin-bottom: 2rem; /* restaurado */
+  margin-bottom: 2rem;
 }
 
 /* Scroll Animation */
 .fade-in-section {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 .fade-in-section.visible {
@@ -366,8 +465,7 @@ button {
 /* Seção do histórico */
 .history-section {
   background: var(--bg-color);
-  padding: 3rem 0; /* Adjusted padding-top and padding-bottom for symmetry with p
-adding-left/right of 0 */
+  padding: 3rem 0;
   font-family: var(--font-body);
   color: rgba(191, 184, 166, 0.9);
 }
@@ -380,7 +478,7 @@ adding-left/right of 0 */
 /*Accordion Base Styles*/
 .accordion-item {
   width: 100%;
-  margin: 0 auto 1rem; /* Centraliza e adiciona espaçamento vertical */
+  margin: 0 auto 1rem;
   border: 1px solid var(--primary-color);
   border-radius: 8px;
   overflow: hidden;
@@ -441,9 +539,9 @@ adding-left/right of 0 */
 
 /*Seção Perfis*/
 .profiles-section {
-  background-color: var(--bg-shade-light); /* Changed to new variable */
-  border-top: 1px solid var(--bg-main); /* Added border-top */
-  padding: 3rem 0; /* Adjusted padding-top and padding-bottom for symmetry with padding-left/right of 0 */
+  background-color: var(--bg-shade-light);
+  border-top: 1px solid var(--bg-main);
+  padding: 3rem 0;
   font-family: var(--font-body);
 }
 
@@ -475,16 +573,11 @@ adding-left/right of 0 */
 .profiles-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza os itens horizontalmente */
-  max-width: 56rem; /* Limita a largura do container dos perfis */
-  margin: 0 auto; /* Centraliza o container na página */
-  padding: 0 1.5rem; /* Adiciona padding lateral */
+  align-items: center;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
-
-/* Profile specific styles 
-.profile-item .accordion-name {
-   Specific styles if needed 
-} */
 
 .profile-content-inner {
   padding: 2rem;
@@ -534,25 +627,29 @@ adding-left/right of 0 */
   box-sizing: border-box; /* garante que padding não aumente o tamanho total inesperadamente */
 }
 
-/* Ajuste responsivo: reduz o deslocamento em telas pequenas */
-@media (max-width: 600px) {
-  .timeline-container {
-    margin-top: 36px;
-    padding-top: 20px; /* ajusta o espaçamento interno em telas pequenas */
-  }
-}
-
-/* Círculo principal */
+/* Círculo principal (Mobile First: Hidden) */
 .timeline-circle {
+  display: none;
   position: relative;
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1; /* garante proporção perfeita do círculo */
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 2px solid var(--primary-color);
 }
 
-/* Centro do círculo */
+/* Mobile View Timeline (Mobile First: Visible) */
+.timeline-mobile-view {
+  display: block; /* Visível em mobile */
+  width: 100%;
+}
+
+.timeline-item-mobile {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+/* Centro do círculo (Desktop) */
 .timeline-center {
   position: absolute;
   inset: 0;
@@ -563,11 +660,13 @@ adding-left/right of 0 */
   max-height: 240px;
   overflow-y: auto;
   text-align: center;
-  padding: 48px 22px 18px 22px; /* Aumentado o padding-top para afastar o conteúdo do topo */
+  padding: 48px 22px 18px 22px;
   color: var(--zzcream);
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .timeline-center.hidden {
@@ -613,14 +712,19 @@ adding-left/right of 0 */
   font-weight: bold;
   cursor: pointer;
   border: 2px solid var(--primary-color);
-  transition: transform 0.3s ease, box-shadow 0.4s ease, background 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.4s ease,
+    background 0.3s ease;
 }
 
 /* Glow dourado ao hover ou ativo */
 .timeline-point:hover,
 .timeline-point.active {
   transform: scale(1.15);
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 0 0 16px rgba(212, 175, 55, 0.5),
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.6),
+    0 0 16px rgba(212, 175, 55, 0.5),
     0 0 32px rgba(212, 175, 55, 0.4);
 }
 .discography-wrapper {
@@ -660,12 +764,11 @@ adding-left/right of 0 */
   font-size: 1rem;
 }
 
-/* CARD CONTENT */
-
+/* CARD CONTENT (Mobile First: Column) */
 .card-content-split {
   display: flex;
-  flex-direction: column; /* Manter coluna como padrão para mobile */
-  gap: 1.5rem; /* Aumentar um pouco o gap */
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .left-side,

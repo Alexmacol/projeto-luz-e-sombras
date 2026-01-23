@@ -2,6 +2,7 @@
 import { search } from "./search.js";
 import { setupTimeline } from "./timeline.js";
 import { fetchLocalData } from "./api.js";
+import { initMobileMenu } from "./menu-mobile.js";
 import {
   renderHistory,
   renderAlbumsAndCompilations,
@@ -228,22 +229,6 @@ function setupNavigationHandlers() {
   });
 }
 
-// Menu mobile
-function setupMobileMenu() {
-  const mobileBtn = document.getElementById("mobileBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  if (mobileBtn && mobileMenu) {
-    mobileBtn.addEventListener("click", () => {
-      const isMenuOpen = mobileBtn.classList.toggle("open");
-      mobileBtn.setAttribute("aria-expanded", isMenuOpen);
-      mobileMenu.style.maxHeight = isMenuOpen
-        ? mobileMenu.scrollHeight + "px"
-        : "0";
-    });
-  }
-}
-
 /**
  * Ajusta o scroll-margin-top de todas as seções com ID para compensar a altura do header.
  */
@@ -290,7 +275,7 @@ async function initialize() {
   await renderInitialPageContent();
   setupSearchHandlers();
   setupNavigationHandlers(); // Inicializa os handlers de navegação inteligentes
-  setupMobileMenu();
+  initMobileMenu();
   setupCloseSearchListener(); // Configura o listener para o botão de fechar
   setupHeaderObserver(); // Inicia o monitoramento do tamanho do header
 }
