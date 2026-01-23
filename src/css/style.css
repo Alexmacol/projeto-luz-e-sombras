@@ -88,10 +88,11 @@ button {
 
 /* HEADER */
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   z-index: 100;
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--header-footer-line);
@@ -106,8 +107,7 @@ button {
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-header);
-  padding-top: 0.5rem 0;
-  padding-bottom: 0.5rem 0;
+  padding: 0.5rem 0;
 }
 
 .logo a {
@@ -370,8 +370,8 @@ header .menu__mobile.abrir {
 }
 
 .close-search-btn {
-  background-color: var(--bg-cta-accent); 
-  border-radius: 9999px; 
+  background-color: var(--bg-cta-accent);
+  border-radius: 9999px;
   padding: 0.75rem 2rem;
   border: none;
   color: var(--zzcream);
@@ -432,6 +432,14 @@ header .menu__mobile.abrir {
   color: var(--primary-color);
   margin-bottom: var(--section-title-gap);
 }
+
+.search-results-title {
+  letter-spacing: 0.05rem; 
+  font-size: 1.3rem;
+  line-height: 1.2; 
+  padding: 0 1rem; 
+}
+
 .section-subtitle {
   text-align: center;
   margin-top: 0;
@@ -861,16 +869,27 @@ article a {
   justify-content: center;
   align-items: center;
   gap: 15px;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-links a {
   color: var(--zzcream);
+  font-size: 0.920rem;
+
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .footer-links a:hover {
-  color: var(--secondary-color);
+  color: var(--tertiary-color);
+}
+
+.footer-text-center {
+  text-align: center;
+  margin-top: 10px;
+  color: var(--tertiary-color);
+  font-size: 0.9rem;
 }
 
 .visually-hidden {

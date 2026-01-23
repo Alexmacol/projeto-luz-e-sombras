@@ -179,11 +179,10 @@ function setupSearchHandlers() {
 }
 
 /**
- * Configura os manipuladores de navegação para garantir que o site funcione
- * mesmo quando os resultados da busca estão visíveis (o que remove as seções originais).
+ * Configura os manipuladores de navegação para garantir que o site funcione mesmo quando os resultados da busca estão visíveis (o que remove as seções originais).
  */
 function setupNavigationHandlers() {
-  const navLinks = document.querySelectorAll(".nav-desktop a");
+  const navLinks = document.querySelectorAll(".nav-desktop a, .menu__mobile a");
 
   navLinks.forEach((link) => {
     link.addEventListener("click", async (event) => {
@@ -193,7 +192,20 @@ function setupNavigationHandlers() {
       if (href && href.startsWith("#")) {
         event.preventDefault();
 
-        // Verifica se estamos no "modo busca" (se as seções originais não existem)
+        // Fecha o menu mobile se estiver aberto
+        const menuMobile = document.getElementById("menu__mobile");
+        const line1 = document.querySelector(".menu-mobile__line1");
+        const line2 = document.querySelector(".menu-mobile__line2");
+        const body = document.querySelector("body");
+
+        if (menuMobile && menuMobile.classList.contains("abrir")) {
+          menuMobile.classList.remove("abrir");
+          if (line1) line1.classList.remove("--ativo1");
+          if (line2) line2.classList.remove("--ativo2");
+          if (body) body.classList.remove("no-overflow");
+        }
+
+        // Verifica se "modo busca" está ativo (se as seções originais não existem)
         const isSearchMode = !document.getElementById("history");
 
         if (isSearchMode) {
@@ -231,6 +243,7 @@ function setupNavigationHandlers() {
 
 /**
  * Ajusta o scroll-margin-top de todas as seções com ID para compensar a altura do header.
+ * Também adiciona padding ao body para evitar que o conteúdo seja escondido pelo header fixo.
  */
 function adjustScrollMargin() {
   const header = document.querySelector(".header");
@@ -238,6 +251,9 @@ function adjustScrollMargin() {
 
   const headerHeight = header.offsetHeight;
   const sections = document.querySelectorAll("section[id]");
+
+  // Adiciona padding ao body para compensar a posição 'fixed' do header
+  document.body.style.paddingTop = `${headerHeight}px`;
 
   sections.forEach((section) => {
     section.style.scrollMarginTop = `${headerHeight}px`;
@@ -252,10 +268,10 @@ function setupCloseSearchListener() {
     if (event.target && event.target.id === "close-search-btn") {
       const searchInput = document.getElementById("siteSearch");
       if (searchInput) {
-        searchInput.value = ""; // Clear the search input
+        searchInput.value = ""; // Limpa o input
       }
       renderInitialPageContent();
-      // Scroll to top
+      // Scroll suave para topo
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });

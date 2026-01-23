@@ -97,11 +97,11 @@ export function renderAlbumsAndCompilations(container, data) {
   const fragment = document.createDocumentFragment();
 
   data.forEach((album) => {
-    // Sanitize album name for use in IDs
+    // Remove caracteres especiais do nome do álbum para usar como ID
     const albumId = album.album.replace(/[^a-zA-Z0-9]/g, "-");
 
     const albumItem = document.createElement("div");
-    albumItem.className = "accordion-item album-item"; // Added accordion-item class
+    albumItem.className = "accordion-item album-item"; // adiciona a classe "accordion-item"
 
     albumItem.innerHTML = `
       <button class="accordion-header album-header" aria-expanded="false" aria-controls="album-content-${albumId}">
@@ -139,66 +139,8 @@ export function renderAlbumsAndCompilations(container, data) {
 }
 
 /**
- * Renderiza os cards de músicas, agrupadas por ano, garantindo que cada música apareça apenas uma vez.
+ * Renderiza os perfis dos membros da banda como um accordion.
  * @param {HTMLElement} container
- * @param {Array} data A lista de todos os álbuns.
- */
-export function renderSongs(container, data) {
-  clearContainer(container);
-
-  const normalizeTrackName = (name) =>
-    name
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, "")
-      .trim();
-
-  // Ordena os álbuns por ano para processar os lançamentos originais primeiro
-  const sortedData = [...data].sort((a, b) => a.year - b.year);
-  const processedSongs = new Set();
-  const songsByYear = {};
-
-  sortedData.forEach((album) => {
-    album.tracks.forEach((track) => {
-      const normalizedTrack = normalizeTrackName(track);
-      // Se a música normalizada ainda não foi processada, é o seu lançamento original
-      if (!processedSongs.has(normalizedTrack)) {
-        if (!songsByYear[album.year]) {
-          songsByYear[album.year] = new Set();
-        }
-        // Adiciona o nome original da música, mas rastreia a versão normalizada
-        songsByYear[album.year].add(track);
-        processedSongs.add(normalizedTrack); // Marca a música como processada
-      }
-    });
-  });
-
-  const sortedYears = Object.keys(songsByYear).sort((a, b) => a - b);
-  const fragment = document.createDocumentFragment();
-
-  sortedYears.forEach((year) => {
-    const card = document.createElement("article");
-    card.classList.add("card", "card-content-split");
-    card.innerHTML = `
-      <div class="left-side">
-          <h2>Músicas de ${year}</h2>
-        </div>
-        <div class="right-side">
-          <ul>
-            ${Array.from(songsByYear[year])
-              .sort()
-              .map((track) => `<li>${track}</li>`)
-              .join("")}
-                    </ul>
-                  </div>
-              `;
-              fragment.appendChild(card);
-            });
-            container.appendChild(fragment);
-          }
-          
-          /**
-           * Renderiza os perfis dos membros da banda como um accordion.
-           * @param {HTMLElement} container
            * @param {Object} profilesData
            */
           export function renderProfiles(container, profilesData) {
@@ -264,7 +206,7 @@ export function renderSearchResults(container, results, query) {
 
   // Título
   const title = document.createElement("h2");
-  title.className = "section-title";
+  title.className = "section-title search-results-title";
   title.textContent = `Resultados para "${query}"`;
   wrapper.appendChild(title);
 
@@ -387,7 +329,6 @@ export function renderTimelineMobile(container, timelineData) {
   const fragment = document.createDocumentFragment();
 
   timelineData.forEach((item, index) => {
-    // Clean year string for ID usage if necessary, though index is safer here
     const itemId = `timeline-mobile-${index}`;
 
     const timelineItem = document.createElement("div");
