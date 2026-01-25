@@ -46,11 +46,11 @@ export function renderError(container, message) {
 
 /**
  * Renderiza o card com a história da banda.
- * @param {HTMLElement} container O elemento da seção que contém o wrapper.
+ * @param {HTMLElement} sectionElement O elemento da seção que contém o wrapper.
  * @param {string} historyText O texto da história a ser renderizado.
  */
-export function renderHistory(container, historyText) {
-  const historyWrapper = container.querySelector(".history-wrapper");
+export function renderHistory(sectionElement, historyText) {
+  const historyWrapper = sectionElement.querySelector(".history-wrapper");
   if (!historyWrapper) {
     console.error("Error: .history-wrapper not found inside history section.");
     return;

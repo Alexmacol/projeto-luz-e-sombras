@@ -42,6 +42,10 @@ body {
   overflow: hidden;
 }
 
+.hidden {
+  display: none !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;

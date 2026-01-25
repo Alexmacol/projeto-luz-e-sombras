@@ -23,10 +23,16 @@ function highlight(text, query) {
  * @param {string} query O termo de busca.
  */
 export async function search(query) {
-  const mainContent = document.querySelector(".main-content");
+  const originalContent = document.getElementById("original-content");
+  const searchResultsContainer = document.getElementById("search-results");
 
   if (!query || query.trim() === "") {
-    // Restaura o estado inicial recarregando a página.
+    // Restaura o estado inicial.
+    if (originalContent) originalContent.classList.remove("hidden");
+    if (searchResultsContainer) {
+      searchResultsContainer.classList.add("hidden");
+      searchResultsContainer.innerHTML = "";
+    }
     return;
   }
 
@@ -34,10 +40,14 @@ export async function search(query) {
   const data = await fetchLocalData();
 
   if (!data) {
-    renderError(
-      mainContent,
-      "Não foi possível realizar a busca. Tente novamente mais tarde."
-    );
+    if (searchResultsContainer) {
+      searchResultsContainer.classList.remove("hidden");
+      renderError(
+        searchResultsContainer,
+        "Não foi possível realizar a busca. Tente novamente mais tarde."
+      );
+    }
+    if (originalContent) originalContent.classList.add("hidden");
     return;
   }
 
@@ -102,23 +112,28 @@ export async function search(query) {
 
   // Lógica da busca - Shows
   if (data.shows) {
-    results.shows = data.shows
-      .filter(
-        (show) =>
-          show.data.toLowerCase().includes(lowerCaseQuery) ||
-          show.local.toLowerCase().includes(lowerCaseQuery) ||
-          show.contexto.toLowerCase().includes(lowerCaseQuery) ||
-          show.setlist.some((song) =>
-            song.toLowerCase().includes(lowerCaseQuery)
+          results.shows = data.shows
+          .filter(
+            (show) =>
+              show.data.toLowerCase().includes(lowerCaseQuery) ||
+              show.local.toLowerCase().includes(lowerCaseQuery) ||
+              show.contexto.toLowerCase().includes(lowerCaseQuery) ||
+              show.setlist.some((song) =>
+                song.toLowerCase().includes(lowerCaseQuery)
+              )
           )
-      )
-      .map((show) => ({
-        ...show,
-        local: highlight(show.local, query),
-        contexto: highlight(show.contexto, query),
-        setlist: show.setlist.map((song) => highlight(song, query)),
-      }));
-  }
-
-  renderSearchResults(mainContent, results, query);
-}
+          .map((show) => ({
+            ...show,
+            local: highlight(show.local, query),
+            contexto: highlight(show.contexto, query),
+            setlist: show.setlist.map((song) => highlight(song, query)),
+          }));
+      }
+    
+      if (originalContent) originalContent.classList.add("hidden");
+      if (searchResultsContainer) {
+        searchResultsContainer.classList.remove("hidden");
+        renderSearchResults(searchResultsContainer, results, query);
+      }
+    }
+    

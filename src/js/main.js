@@ -13,111 +13,158 @@ import {
 import { setupScrollAnimations } from "./animations.js";
 
 /**
- * Renderiza o conteúdo inicial da página (história, perfis, discografia, etc.).
- * Esta função reconstrói o layout principal da página.
+
+ * Exibe o conteúdo inicial da página e oculta os resultados da busca.
+
+ * Esta função apenas alterna a visibilidade dos containers.
+
  */
+
 export async function renderInitialPageContent() {
-  const mainContent = document.querySelector(".main-content");
-  if (!mainContent) {
-    console.error("Critical: main-content element not found.");
-    return;
+
+  const originalContent = document.getElementById("original-content");
+
+  const searchResultsContainer = document.getElementById("search-results");
+
+
+
+  if (searchResultsContainer) {
+
+    searchResultsContainer.classList.add("hidden");
+
+    searchResultsContainer.innerHTML = "";
+
   }
 
-  // Limpa o conteúdo atual e restaura a estrutura HTML original das seções
-  mainContent.innerHTML = `
-    <section class="history-section fade-in-section" id="history">
-      <div class="interface">
-        <h2 class="section-title">História</h2>
-        <h3 class="section-subtitle">A Jornada</h3>
-        <div class="history-wrapper"></div>
-      </div>
-    </section>
-    <section class="profiles-section fade-in-section" id="profiles">
-      <div class="interface">
-        <h2 class="section-title">Perfis</h2>
-        <h3 class="section-subtitle">Os Quatro Elementos</h3>
-        <div class="profile-symbols-container">
-          <img src="src/images/jimmy-page.svg" alt="Símbolo de Jimmy Page" class="profile-intro-symbol">
-          <img src="src/images/john-paul-jones.svg" alt="Símbolo de John Paul Jones" class="profile-intro-symbol">
-          <img src="src/images/john-bonham.svg" alt="Símbolo de John Bonham" class="profile-intro-symbol">
-          <img src="src/images/robert-plant.svg" alt="Símbolo de Robert Plant" class="profile-intro-symbol">
-        </div>
-        <p class="section-intro">Em 1971, o Led Zeppelin decidiu que sua música deveria falar por si. Sem nomes ou rostos na capa, cada membro escolheu um símbolo (sigilo mágico) para representar sua essência. O que se segue é o perfil das quatro forças que, em equilíbrio, definiram o som de uma era.</p>
-        <div class="profiles-wrapper"></div>
-      </div>
-    </section>
-    <section class="discography-section fade-in-section" id="discography">
-      <div class="interface">
-        <h2 class="section-title">Discografia</h2>
-        <h3 class="section-subtitle">O Legado</h3>
-        <div class="discography-wrapper"></div>
-      </div>
-    </section>
-    <section class="timeline-section fade-in-section" id="timeline">
-      <div class="interface">
-        <h2 class="section-title">Linha do tempo</h2>
-        <h3 class="section-subtitle">Crônicas</h3>
-        <div class="timeline-container">
-          <div class="timeline-circle">
-            <div class="timeline-center" id="timelineCenter"></div>
-            <div class="timeline-point">1968</div><div class="timeline-point">1969</div><div class="timeline-point">1970</div><div class="timeline-point">1971</div><div class="timeline-point">1973</div><div class="timeline-point">1975</div><div class="timeline-point">1977</div><div class="timeline-point">1979</div><div class="timeline-point">1980</div><div class="timeline-point">1985</div><div class="timeline-point">1988</div><div class="timeline-point">1995</div><div class="timeline-point">2007</div><div class="timeline-point">2012</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  `;
 
-  // Re-inicializa componentes e busca dados
-  await setupTimeline();
+
+  if (originalContent) {
+
+    originalContent.classList.remove("hidden");
+
+  }
+
+
+
+  // Garante que o scroll margin e as animações estejam corretos
+
   adjustScrollMargin();
-  setupScrollAnimations();
+
+}
+
+
+
+/**
+
+ * Carrega e renderiza os dados nas seções originais.
+
+ * Chamada apenas uma vez durante a inicialização.
+
+ */
+
+async function loadAndRenderData() {
 
   let data;
+
   try {
+
     data = await fetchLocalData();
+
     if (!data) throw new Error("Falha ao buscar dados locais.");
+
   } catch (error) {
+
     console.error("Erro crítico ao carregar dados locais:", error);
+
     renderError(
+
       document.querySelector(".history-wrapper"),
+
       "Falha ao carregar dados.",
+
     );
+
     renderError(
+
       document.querySelector(".profiles-wrapper"),
+
       "Falha ao carregar dados.",
+
     );
+
     renderError(
+
       document.querySelector(".discography-wrapper"),
+
       "Falha ao carregar dados.",
+
     );
+
     return;
+
   }
+
+
 
   const historyContainer = document.getElementById("history");
+
   if (historyContainer) {
+
     const historyWrapper = historyContainer.querySelector(".history-wrapper");
+
     if (historyWrapper) renderLoading(historyWrapper);
 
+
+
     if (data.historia) renderHistory(historyContainer, data.historia);
+
     else if (historyWrapper)
+
       renderError(historyWrapper, "Falha ao carregar a história.");
+
   }
+
+
 
   const profilesContainer = document.querySelector(".profiles-wrapper");
+
   if (profilesContainer) {
+
     renderLoading(profilesContainer);
+
     if (data.perfis) renderProfiles(profilesContainer, data.perfis);
+
     else renderError(profilesContainer, "Falha ao carregar os perfis.");
+
   }
 
+
+
   const discographyContainer = document.querySelector(".discography-wrapper");
+
   if (discographyContainer) {
+
     renderLoading(discographyContainer);
+
     if (data.albuns)
+
       renderAlbumsAndCompilations(discographyContainer, data.albuns);
+
     else renderError(discographyContainer, "Falha ao carregar a discografia.");
+
   }
+
+
+
+  // Inicializa componentes que dependem dos dados renderizados
+
+  await setupTimeline();
+
+  setupScrollAnimations();
+
 }
+
+
 
 /**
  * Configura os manipuladores de eventos para a funcionalidade de busca.
@@ -205,15 +252,11 @@ function setupNavigationHandlers() {
           if (body) body.classList.remove("no-overflow");
         }
 
-        // Verifica se "modo busca" está ativo (se as seções originais não existem)
-        const isSearchMode = !document.getElementById("history");
-
-        if (isSearchMode) {
-          // Limpa o input de busca para refletir o reset
+        // Se estiver nos resultados da busca, volta para o conteúdo original
+        const searchResultsContainer = document.getElementById("search-results");
+        if (searchResultsContainer && !searchResultsContainer.classList.contains("hidden")) {
           const searchInput = document.getElementById("siteSearch");
           if (searchInput) searchInput.value = "";
-
-          // Restaura o conteúdo original
           await renderInitialPageContent();
         }
 
@@ -288,7 +331,8 @@ function setupHeaderObserver() {
 
 // Função de inicialização principal
 async function initialize() {
-  await renderInitialPageContent();
+  await loadAndRenderData(); // Carrega os dados uma única vez
+  await renderInitialPageContent(); // Garante o estado inicial de visibilidade
   setupSearchHandlers();
   setupNavigationHandlers(); // Inicializa os handlers de navegação inteligentes
   initMobileMenu();
