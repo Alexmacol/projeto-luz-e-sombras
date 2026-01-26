@@ -1,10 +1,14 @@
 <h1 align="center">
-  <span style="background-color: #FFD700; color: black; padding: 0 10px; border-radius: 4px;">
+  <span style="color: #FFD700; padding: 0 10px; border-radius: 4px;">
     Led Zeppelin — Light and Shade
   </span>
 </h1>
 
 Uma aplicação web imersiva que documenta a trajetória do Led Zeppelin, utilizando Inteligência Artificial para curadoria de conteúdo e uma arquitetura de cache local para performance otimizada, unindo a história do rock à tecnologia moderna.
+
+[![Prévia do projeto Luz e Sombra](src/images/preview.webp)](https://projeto-luz-e-sombras.vercel.app/)
+Para abrir o link em uma nova aba, utilize **Ctrl + Clique** (Windows) ou **Cmd + Clique** (Mac).
+
 
 ## Sobre o Projeto
 
