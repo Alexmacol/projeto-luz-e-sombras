@@ -93,7 +93,7 @@ async function updateHistory(force = false) {
     }
 
     console.log("-> Gerando nova história com IA...");
-    const prompt = "Aja como um especialista da história do rock n roll. Forneça um resumo bem escrito, sucinto e envolvente sobre a história da banda Led Zeppelin em no máximo 5 parágrafos, de no máximo 4 linhas, inclua datas importantes e destaque os álbuns mais aclamados junto a público e crítica, colocando seus títulos entre aspas (por exemplo, \"Led Zeppelin IV\"). O texto deve conter apenas a informação solicitada, não inclua na resposta nada do tipo 'Claro, aqui está um resumo...'. Evite asteriscos.";
+    const prompt = "Aja como um especialista da história do rock n roll. Forneça um resumo bem escrito, sucinto e envolvente sobre a história da banda Led Zeppelin em no máximo 5 parágrafos, de no máximo 4 linhas, inclua datas importantes e destaque os álbuns mais aclamados junto a público e crítica, colocando seus títulos entre aspas (por exemplo, \"Led Zeppelin IV\"). O texto deve conter apenas a informação solicitada, não invente nada, não inclua na resposta nada do tipo 'Claro, aqui está um resumo...'. Evite asteriscos.";
 
     const newHistoryText = await getGenerativeAIResponse(prompt, "a história");
 
@@ -132,7 +132,7 @@ async function updateProfiles(force = false) {
 
     for (const member of members) {
       console.log(`   Gerando perfil de ${member}...`);
-      const prompt = `Aja como um especialista da história do rock n roll. Forneça uma biografia resumida de ${member}, membro do Led Zeppelin, em no máximo 4 parágrafos. Destaque o símbolo dele e estilos técnicos. Sem asteriscos.`;
+      const prompt = `Aja como um especialista da história do rock n roll. Forneça uma biografia resumida de ${member}, membro do Led Zeppelin, em no máximo 4 parágrafos. Cada parágrafo deve conter no máximo 4 linhas. Destaque o símbolo dele e estilos técnicos. Não invente nada, não inclua na resposta nada do tipo 'Claro, aqui está a biografia...'. Sem asteriscos.`;
 
       const text = await getGenerativeAIResponse(prompt, `perfil de ${member}`);
       if (text) profilesData[member] = text;
@@ -165,7 +165,7 @@ async function updateShows(force = false) {
     }
 
     console.log("-> Gerando lista de shows com IA...");
-    const prompt = `Atue como um historiador do rock. Identifique shows icônicos do Led Zeppelin. Retorne APENAS um ARRAY JSON com campos: data (dd/mm/aaaa), local, contexto, setlist (array). Sem markdown, sem blocos de código.`;
+    const prompt = `Atue como um historiador do rock. Identifique os 10 shows mais icônicos do Led Zeppelin. Retorne APENAS um ARRAY JSON com campos: data (dd/mm/aaaa), local, contexto, setlist (array). Sem markdown, sem blocos de código. Não invente nada.`;
 
     const responseText = await getGenerativeAIResponse(prompt, "shows");
 
