@@ -215,7 +215,7 @@ async function updateShows(force = false) {
     }
 
     console.log("-> Gerando lista de shows com IA...");
-    const prompt = `Atue como um historiador do rock. Identifique os 10 shows mais icônicos do Led Zeppelin. Retorne APENAS um ARRAY JSON estritamente válido com campos: data (dd/mm/aaaa), local, contexto, setlist (array). Se houver menção a qualquer álbum ou música dentro dos valores de string, coloque os títulos em itálico usando asteriscos (ex: *The Song Remains The Same*). Não inclua texto explicativo fora do JSON. Use apenas acentos do português do Brasil. Não invente nada.`;
+    const prompt = `Atue como um historiador do rock e curador musical. Sua tarefa é selecionar os 10 shows mais relevantes e icônicos da carreira do Led Zeppelin. Esta seleção deve obrigatoriamente incluir o primeiro show oficial da banda e o show de reunião 'Celebration Day' de 2007. Os outros 8 shows devem ser escolhidos com base em sua importância histórica, impacto cultural, performances lendárias ou por representarem pontos de virada na carreira da banda. A lista final com os 10 shows deve ser apresentada em estrita ordem cronológica. Retorne APENAS um ARRAY JSON estritamente válido com campos: data (dd/mm/aaaa), local, contexto, setlist (array). Se houver menção a qualquer álbum ou música dentro dos valores de string, coloque os títulos em itálico usando asteriscos (ex: *The Song Remains The Same*). Não inclua texto explicativo fora do JSON. Use apenas acentos do português do Brasil. Não invente nada.`;
 
     // Passa a configuração de limite de tokens apenas para esta chamada específica
     const responseText = await getGenerativeAIResponse(prompt, "shows", {
