@@ -220,6 +220,7 @@ async function updateShows(force = false) {
     // Passa a configuração de limite de tokens apenas para esta chamada específica
     const responseText = await getGenerativeAIResponse(prompt, "shows", {
       maxOutputTokens: 8192,
+      responseMimeType: "application/json",
     });
 
     if (responseText) {
