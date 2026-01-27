@@ -190,7 +190,7 @@ async function updateProfiles(force = false) {
 
       const text = await getGenerativeAIResponse(prompt, `perfil de ${member}`);
       if (text) profilesData[member] = text;
-      await delay(2000);
+      await delay(10000); // Espera 10s entre cada perfil para garantir a cota
     }
 
     if (Object.keys(profilesData).length > 0) {
@@ -268,9 +268,9 @@ async function runUpdates() {
 
   // Passa essa decisão para todas as funções
   await updateHistory(shouldUpdate);
-  await delay(1000);
+  await delay(5000); // Espera 5s antes de começar os perfis
   await updateProfiles(shouldUpdate);
-  await delay(1000);
+  await delay(5000); // Espera 5s antes de começar os shows
   await updateShows(shouldUpdate);
 
   console.log("--- Verificação concluída ---");
