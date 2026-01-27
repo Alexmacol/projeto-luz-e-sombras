@@ -17,6 +17,25 @@ const DATA_FILE = path.join(__dirname, "data.json");
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
+ * Lê os dados locais de forma segura.
+ */
+async function getLocalData() {
+  try {
+    const data = await fs.readFile(DATA_FILE, "utf-8");
+    return JSON.parse(data);
+  } catch (error) {
+    return { led_zeppelin: {} };
+  }
+}
+
+/**
+ * Salva os dados no arquivo JSON.
+ */
+async function saveLocalData(data) {
+  await fs.writeFile(DATA_FILE, JSON.stringify(data, null, 2), "utf-8");
+}
+
+/**
  * Retorna uma resposta gerada pela API do Google Generative AI para um dado prompt.
  */
 async function getGenerativeAIResponse(prompt, logContext) {
@@ -63,8 +82,7 @@ async function needsUpdate(filePath) {
     }
 
     // Verifica se os dados internos estão vazios (caso de arquivo criado manualmente)
-    const fileContent = await fs.readFile(filePath, "utf-8");
-    const jsonData = JSON.parse(fileContent);
+    const jsonData = await getLocalData();
     const hasHistory =
       jsonData.led_zeppelin.historia &&
       jsonData.led_zeppelin.historia.length > 100;
@@ -92,13 +110,7 @@ async function needsUpdate(filePath) {
  */
 async function updateHistory(force = false) {
   try {
-    let jsonData = { led_zeppelin: {} };
-    try {
-      const existing = await fs.readFile(DATA_FILE, "utf-8");
-      jsonData = JSON.parse(existing);
-    } catch (e) {
-      /* arquivo novo */
-    }
+    const jsonData = await getLocalData();
 
     // Se NÃO for forçado E já tiver dados, pula
     if (
@@ -121,7 +133,7 @@ async function updateHistory(force = false) {
       if (!jsonData.led_zeppelin.perfis) jsonData.led_zeppelin.perfis = {};
       if (!jsonData.led_zeppelin.shows) jsonData.led_zeppelin.shows = [];
 
-      await fs.writeFile(DATA_FILE, JSON.stringify(jsonData, null, 2), "utf-8");
+      await saveLocalData(jsonData);
       console.log("✓ História atualizada.");
     }
   } catch (error) {
@@ -135,8 +147,7 @@ async function updateHistory(force = false) {
  */
 async function updateProfiles(force = false) {
   try {
-    const fileContent = await fs.readFile(DATA_FILE, "utf-8");
-    const jsonData = JSON.parse(fileContent);
+    const jsonData = await getLocalData();
 
     // Se NÃO for forçado E já tiver perfis completos, pula
     if (
@@ -167,14 +178,9 @@ async function updateProfiles(force = false) {
     }
 
     if (Object.keys(profilesData).length > 0) {
-      const currentFile = await fs.readFile(DATA_FILE, "utf-8");
-      const currentJson = JSON.parse(currentFile);
+      const currentJson = await getLocalData();
       currentJson.led_zeppelin.perfis = profilesData;
-      await fs.writeFile(
-        DATA_FILE,
-        JSON.stringify(currentJson, null, 2),
-        "utf-8",
-      );
+      await saveLocalData(currentJson);
       console.log("✓ Perfis atualizados.");
     }
   } catch (error) {
@@ -188,8 +194,7 @@ async function updateProfiles(force = false) {
  */
 async function updateShows(force = false) {
   try {
-    const fileContent = await fs.readFile(DATA_FILE, "utf-8");
-    const jsonData = JSON.parse(fileContent);
+    const jsonData = await getLocalData();
 
     if (
       !force &&
@@ -206,14 +211,9 @@ async function updateShows(force = false) {
 
     if (responseText) {
       const cleanedText = responseText.replace(/```json|```/g, "").trim();
-      const currentFile = await fs.readFile(DATA_FILE, "utf-8");
-      const currentJson = JSON.parse(currentFile);
+      const currentJson = await getLocalData();
       currentJson.led_zeppelin.shows = JSON.parse(cleanedText);
-      await fs.writeFile(
-        DATA_FILE,
-        JSON.stringify(currentJson, null, 2),
-        "utf-8",
-      );
+      await saveLocalData(currentJson);
       console.log("✓ Shows atualizados.");
     }
   } catch (error) {
@@ -257,6 +257,15 @@ async function startServer() {
     },
     1000 * 60 * 60,
   ); // 1 hora
+
+  // Middleware de segurança para bloquear acesso a arquivos sensíveis
+  app.use((req, res, next) => {
+    const forbidden = [".env", "server.js", "package.json", "README.md"];
+    if (forbidden.some((file) => req.path.includes(file))) {
+      return res.status(403).send("Acesso negado.");
+    }
+    next();
+  });
 
   app.use(express.static(path.join(__dirname)));
   app.listen(port, () => {
