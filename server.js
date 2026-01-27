@@ -38,7 +38,11 @@ async function saveLocalData(data) {
 /**
  * Retorna uma resposta gerada pela API do Google Generative AI para um dado prompt.
  */
-async function getGenerativeAIResponse(prompt, logContext) {
+async function getGenerativeAIResponse(
+  prompt,
+  logContext,
+  generationConfig = {},
+) {
   try {
     const apiKey = process.env.GOOGLE_API_KEY;
     if (!apiKey) {
@@ -48,7 +52,13 @@ async function getGenerativeAIResponse(prompt, logContext) {
 
     // Usando Gemini 2.5 Flash para velocidade e compatibilidade (Versão 2026)
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.5-flash",
+      generationConfig: {
+        temperature: 0.7, // Um bom padrão para criatividade controlada
+        ...generationConfig, // Mescla configurações específicas, como maxOutputTokens
+      },
+    });
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
@@ -207,7 +217,10 @@ async function updateShows(force = false) {
     console.log("-> Gerando lista de shows com IA...");
     const prompt = `Atue como um historiador do rock. Identifique os 10 shows mais icônicos do Led Zeppelin. Retorne APENAS um ARRAY JSON estritamente válido com campos: data (dd/mm/aaaa), local, contexto, setlist (array). Se houver menção a qualquer álbum ou música dentro dos valores de string, coloque os títulos em itálico usando asteriscos (ex: *The Song Remains The Same*). Não inclua texto explicativo fora do JSON. Use apenas acentos do português do Brasil. Não invente nada.`;
 
-    const responseText = await getGenerativeAIResponse(prompt, "shows");
+    // Passa a configuração de limite de tokens apenas para esta chamada específica
+    const responseText = await getGenerativeAIResponse(prompt, "shows", {
+      maxOutputTokens: 8192,
+    });
 
     if (responseText) {
       const cleanedText = responseText.replace(/```json|```/g, "").trim();
