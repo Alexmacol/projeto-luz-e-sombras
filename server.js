@@ -62,8 +62,14 @@ async function getGenerativeAIResponse(
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    // Substitui pares de asteriscos por tags <i> para itálico
-    return response.text().replace(/\*([^*]+)\*/g, "<i>$1</i>");
+    const responseText = response.text();
+
+    // Se o modo JSON estiver ativo, retorna o texto puro para ser processado pelo chamador.
+    if (generationConfig.responseMimeType === "application/json") {
+      return responseText;
+    }
+    // Para texto normal, substitui os asteriscos por tags <i> para itálico.
+    return responseText.replace(/\*([^*]+)\*/g, "<i>$1</i>");
   } catch (error) {
     console.warn(
       `Falha ao gerar conteúdo para ${logContext}: ${error.message}`,
@@ -224,9 +230,25 @@ async function updateShows(force = false) {
     });
 
     if (responseText) {
-      const cleanedText = responseText.replace(/```json|```/g, "").trim();
+      // Com o JSON Mode, a resposta é um JSON string limpo.
+      // 1. Parseamos o JSON para um objeto JavaScript.
+      const shows = JSON.parse(responseText);
+
+      // 2. Iteramos no objeto para substituir os asteriscos por tags <i>,
+      // mantendo a consistência com o resto dos dados da aplicação.
+      shows.forEach((show) => {
+        if (show.contexto) {
+          show.contexto = show.contexto.replace(/\*([^*]+)\*/g, "<i>$1</i>");
+        }
+        if (show.setlist && Array.isArray(show.setlist)) {
+          show.setlist = show.setlist.map((song) =>
+            song.replace(/\*([^*]+)\*/g, "<i>$1</i>"),
+          );
+        }
+      });
+
       const currentJson = await getLocalData();
-      currentJson.led_zeppelin.shows = JSON.parse(cleanedText);
+      currentJson.led_zeppelin.shows = shows;
       await saveLocalData(currentJson);
       console.log("✓ Shows atualizados.");
     }
