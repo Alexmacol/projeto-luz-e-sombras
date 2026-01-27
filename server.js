@@ -22,7 +22,9 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function getLocalData() {
   try {
     const data = await fs.readFile(DATA_FILE, "utf-8");
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    if (!parsed.led_zeppelin) parsed.led_zeppelin = {};
+    return parsed;
   } catch (error) {
     return { led_zeppelin: {} };
   }
@@ -182,18 +184,29 @@ async function updateProfiles(force = false) {
       "John Paul Jones",
       "John Bonham",
     ];
-    const profilesData = {};
+    // Começa com os dados existentes para não perder o que já foi baixado
+    const profilesData = { ...(jsonData.led_zeppelin.perfis || {}) };
+    let hasUpdates = false;
 
     for (const member of members) {
+      // Se o perfil já existe e tem conteúdo, pula para economizar cota
+      if (profilesData[member] && profilesData[member].length > 50) {
+        console.log(`   Perfil de ${member} já existe. Pulando.`);
+        continue;
+      }
+
       console.log(`   Gerando perfil de ${member}...`);
       const prompt = `Aja como um especialista da história do rock n roll. Forneça uma biografia resumida de ${member}, membro do Led Zeppelin, em no máximo 5 parágrafos. Cada parágrafo deve conter no máximo 4 linhas. Inclua datas importantes, destaque e explique o símbolo dele e estilos e características técnicas. Se houver menção a qualquer álbum ou música, coloque os títulos em itálico usando asteriscos (ex: *Stairway to Heaven*). Não inclua introduções. Use apenas acentos do português do Brasil. Não invente nada.`;
 
       const text = await getGenerativeAIResponse(prompt, `perfil de ${member}`);
-      if (text) profilesData[member] = text;
+      if (text) {
+        profilesData[member] = text;
+        hasUpdates = true;
+      }
       await delay(10000); // Espera 10s entre cada perfil para garantir a cota
     }
 
-    if (Object.keys(profilesData).length > 0) {
+    if (hasUpdates) {
       const currentJson = await getLocalData();
       currentJson.led_zeppelin.perfis = profilesData;
       await saveLocalData(currentJson);
