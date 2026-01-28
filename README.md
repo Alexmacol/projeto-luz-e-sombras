@@ -12,15 +12,15 @@ Para abrir o link em uma nova aba, utilize **Ctrl + Clique** (Windows) ou **Cmd 
 
 ## Sobre o Projeto
 
-O **Light and Shade** é mais do que um site estático; é um sistema híbrido que combina a robustez do Node.js com a criatividade do Google Gemini AI. O objetivo técnico foi criar uma aplicação que se "auto-atualiza" de forma inteligente. Ao invés de depender de um banco de dados fixo, o sistema verifica a validade das informações locais e, quando necessário, consulta a IA para reescrever biografias, contextos históricos e detalhes de shows, garantindo que o conteúdo seja sempre envolvente e bem redigido, sem sacrificar a velocidade de carregamento para o usuário final.
+O **Light and Shade** é mais do que um site estático; é um sistema híbrido que combina a robustez do Node.js com a criatividade do Google Gemini AI. O objetivo técnico foi criar uma aplicação que se mantém resiliente e atualizada. Ao invés de depender de um banco de dados fixo, o sistema prioriza a estabilidade das informações locais e, quando necessário (como em casos de ausência de dados), consulta a IA para reescrever biografias, contextos históricos e detalhes de shows, garantindo que o conteúdo seja sempre envolvente e bem redigido, sem sacrificar a velocidade de carregamento para o usuário final.
 
 ## Funcionalidades Principais
 
 - **Geração de Conteúdo via IA:** Utiliza o modelo `gemini-2.5-flash` para gerar textos ricos sobre a história da banda, perfis dos membros e curadoria de shows icônicos.
-- **Sistema de Cache Inteligente:** Implementa uma lógica de verificação de 24 horas (`needsUpdate`). Se os dados locais (`data.json`) forem recentes, o servidor economiza recursos; se estiverem expirados ou vazios, uma atualização em background é acionada.
+- **Sistema de Cache Inteligente:** Implementa uma lógica de persistência que prioriza a leitura de dados locais (`data.json`). Se os dados estiverem ausentes ou incompletos, uma atualização em background é acionada para restaurar a integridade da base de dados.
 - **Interface Responsiva:** Frontend moderno (HTML5/CSS3) com seções de História, Perfis (Jimmy Page, Robert Plant, John Paul Jones, John Bonham), Discografia e Linha do Tempo.
 - **Busca e Navegação:** Funcionalidades de pesquisa e filtragem por tags para facilitar o acesso à vasta discografia e fatos históricos.
-- **Atualização Automática:** O servidor possui um agendamento (cron-like) interno que verifica a integridade dos dados a cada hora.
+- **Atualização Seletiva:** O servidor executa uma rotina de verificação na inicialização (`runUpdates`), garantindo que campos dinâmicos sejam restaurados sem afetar dados manuais como discografia e linha do tempo.
 
 ## Tecnologias e Métodos
 
@@ -37,9 +37,9 @@ O projeto foi construído sobre uma stack leve e eficiente:
 A arquitetura segue um padrão de **"Cache-First com Fallback de IA"**. O fluxo de dados opera da seguinte maneira:
 
 1.  **Inicialização:** Ao iniciar, o servidor executa `runUpdates()`.
-2.  **Verificação:** O sistema checa os metadados do arquivo `data.json`.
-    - _Cenário A (Dados Recentes):_ O servidor mantém o arquivo atual.
-    - _Cenário B (Dados Expirados > 24h):_ O servidor aciona o Gemini AI.
+2.  **Verificação:** O sistema checa a presença e integridade dos dados no arquivo `data.json`.
+    - _Cenário A (Dados Presentes):_ O servidor mantém o arquivo atual e prioriza a velocidade de entrega.
+    - _Cenário B (Dados Ausentes/Incompletos):_ O servidor aciona o Gemini AI para reconstrução.
 3.  **Geração (Se necessário):**
     - `updateHistory`: Gera um resumo histórico sucinto.
     - `updateProfiles`: Cria biografias para cada um dos 4 membros.
