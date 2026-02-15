@@ -160,6 +160,6 @@ app.get("/api/data", async (req, res) => {
 app.use(express.static(path.join(__dirname)));
 
 app.listen(port, () => {
-  console.log(`Servidor de produção rodando na porta ${port}`);
+  console.log(`Servidor rodando em: http://localhost:${port}`);
   runUpdates().catch(console.error);
 });
