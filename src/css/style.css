@@ -126,6 +126,16 @@ button {
   text-shadow: var(--bg-color) 1px 1px 2px;
 }
 
+@keyframes pulse-subtitle {
+  0%,
+  100% {
+    color: var(--zzmetal);
+  }
+  50% {
+    color: var(--zzcream);
+  }
+}
+
 .logo .subtitle {
   display: block;
   margin: 0;
@@ -134,13 +144,15 @@ button {
   color: var(--zzmetal);
   font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 0, 0625rem;
+  letter-spacing: 0.0625rem;
   text-transform: uppercase;
   text-shadow: var(--zzcream) 1px 1px 1px;
+  animation: pulse-subtitle 3s ease-in-out infinite;
   transition: color 0.4s ease;
 }
 
 .logo:hover .subtitle {
+  animation: none;
   color: var(--zzcream);
 }
 
@@ -437,10 +449,10 @@ header .menu__mobile.abrir {
 }
 
 .search-results-title {
-  letter-spacing: 0.05rem; 
+  letter-spacing: 0.05rem;
   font-size: 1.3rem;
-  line-height: 1.2; 
-  padding: 0 1rem; 
+  line-height: 1.2;
+  padding: 0 1rem;
 }
 
 .section-subtitle {
@@ -618,8 +630,8 @@ header .menu__mobile.abrir {
 
 /* Seção da linha do tempo */
 .timeline-section {
-  background-color: var(--bg-shade-light); 
-  border-top: 1px solid var(--bg-main); 
+  background-color: var(--bg-shade-light);
+  border-top: 1px solid var(--bg-main);
   padding: 3rem 0;
   font-family: var(--font-body);
 }
@@ -876,7 +888,7 @@ article a {
 
 .footer-links a {
   color: var(--zzcream);
-  font-size: 0.920rem;
+  font-size: 0.92rem;
 
   text-decoration: none;
   transition: color 0.2s;
