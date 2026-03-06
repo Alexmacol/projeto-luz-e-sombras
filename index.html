@@ -73,14 +73,17 @@
           <!-- MOBILE NAV -->
           <div
             class="menu-mobile__btn"
-            id="menu-mobile__btn">
+            id="menu-mobile__btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            role="button">
             <div class="menu-mobile__line1"></div>
             <div class="menu-mobile__line2"></div>
           </div>
-          <section
+          <div
             class="menu__mobile"
             id="menu__mobile">
-            <nav>
+            <nav aria-label="Navegação mobile">
               <ul class="menu">
                 <li><a href="#">Home</a></li>
                 <li><a href="#history">História</a></li>
@@ -89,7 +92,7 @@
                 <li><a href="#timeline">Linha do tempo</a></li>
               </ul>
             </nav>
-          </section>
+          </div>
         </div>
       </div>
     </header>
@@ -171,10 +174,11 @@
             <h2 class="section-title">Perfis</h2>
             <h3 class="section-subtitle">Os Quatro Elementos</h3>
             <p class="section-intro">
-              Em 1971, o Led Zeppelin decidiu que sua música deveria falar por si.
-              Sem nomes ou rostos na capa, cada membro escolheu um símbolo (sigilo
-              mágico) para representar sua essência. O que se segue é o perfil das
-              quatro forças que, em equilíbrio, definiram o som de uma era.
+              Em 1971, o Led Zeppelin decidiu que sua música deveria falar por
+              si. Sem nomes ou rostos na capa, cada membro escolheu um símbolo
+              (sigilo mágico) para representar sua essência. O que se segue é o
+              perfil das quatro forças que, em equilíbrio, definiram o som de
+              uma era.
             </p>
             <div class="profile-symbols-container">
               <img
@@ -253,7 +257,9 @@
       </div>
 
       <!-- Container para resultados da busca -->
-      <div id="search-results" class="hidden"></div>
+      <div
+        id="search-results"
+        class="hidden"></div>
     </main>
 
     <footer class="footer">

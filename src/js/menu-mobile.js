@@ -11,6 +11,13 @@ export function initMobileMenu() {
       line2.classList.toggle("--ativo2");
       menuMobile.classList.toggle("abrir");
       body.classList.toggle("no-overflow");
+
+      const isExpanded = menuMobile.classList.contains("abrir");
+      menuMobileBtn.setAttribute("aria-expanded", isExpanded);
+      menuMobileBtn.setAttribute(
+        "aria-label",
+        isExpanded ? "Fechar menu" : "Abrir menu",
+      );
     });
   }
 }
