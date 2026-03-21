@@ -536,6 +536,9 @@ header .menu__mobile.abrir {
 .accordion-name {
   flex-grow: 1;
   text-align: center;
+  font-weight: bold;
+  color: var(--zzmetal);
+  text-shadow: var(--zzcream) 1px 1px 1px;
 }
 
 .accordion-toggle-btn {

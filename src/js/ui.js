@@ -141,53 +141,53 @@ export function renderAlbumsAndCompilations(container, data) {
 /**
  * Renderiza os perfis dos membros da banda como um accordion.
  * @param {HTMLElement} container
-           * @param {Object} profilesData
-           */
-          export function renderProfiles(container, profilesData) {
-            clearContainer(container);
-          
-            const membersOrder = ["Jimmy Page", "John Paul Jones", "John Bonham", "Robert Plant"];
-            const displayNames = {
-              "John Bonham": "John 'Bonzo' Bonham",
-            };
-          
-            const fragment = document.createDocumentFragment();
-          
-            membersOrder.forEach((memberName) => {
-              const profileText = profilesData[memberName];
-              if (!profileText) return;
-          
-              const displayName = displayNames[memberName] || memberName;
+ * @param {Object} profilesData
+ */
+export function renderProfiles(container, profilesData) {
+  clearContainer(container);
 
-              const symbolFilename = memberName.toLowerCase().replace(/\s+/g, "-");
+  const membersOrder = ["Jimmy Page", "John Paul Jones", "John Bonham", "Robert Plant"];
+  const displayNames = {
+    "John Bonham": "John 'Bonzo' Bonham",
+  };
 
-              const profileItem = document.createElement("div");
-              profileItem.className = "accordion-item profile-item"; // Added accordion-item class
-          
-              profileItem.innerHTML = `
-                <button class="accordion-header profile-header" aria-expanded="false" aria-controls="profile-content-${memberName.replace(/\s+/g, "-")}">
-                <img src="src/images/${symbolFilename}.svg" alt="Símbolo de ${memberName}" class="profile-header-symbol">
-                  <span class="accordion-name profile-name">${displayName}</span>
-                  <span class="accordion-toggle-btn profile-toggle-btn">+</span>
-                </button>
-                <div class="accordion-content profile-content" id="profile-content-${memberName.replace(/\s+/g, "-")}">
-                  <div class="profile-content-inner">
-                    ${profileText.replace(/\n/g, "<br>")}
-                  </div>
-                </div>
-              `;
-          
-              const header = profileItem.querySelector(".accordion-header");
-              const content = profileItem.querySelector(".accordion-content");
-              const buttonText = profileItem.querySelector(".accordion-toggle-btn");
-          
-              setupAccordionToggle(header, content, buttonText, profileItem);
-          
-              fragment.appendChild(profileItem);
-            });
-          
-            container.appendChild(fragment);
-          }
+  const fragment = document.createDocumentFragment();
+
+  membersOrder.forEach((memberName) => {
+    const profileText = profilesData[memberName];
+    if (!profileText) return;
+
+    const displayName = displayNames[memberName] || memberName;
+
+    const symbolFilename = memberName.toLowerCase().replace(/\s+/g, "-");
+
+    const profileItem = document.createElement("div");
+    profileItem.className = "accordion-item profile-item";
+
+    profileItem.innerHTML = `
+      <button class="accordion-header profile-header" aria-expanded="false" aria-controls="profile-content-${memberName.replace(/\s+/g, "-")}">
+      <img src="src/images/${symbolFilename}.svg" alt="Símbolo de ${memberName}" class="profile-header-symbol">
+        <span class="accordion-name profile-name">${displayName}</span>
+        <span class="accordion-toggle-btn profile-toggle-btn">+</span>
+      </button>
+      <div class="accordion-content profile-content" id="profile-content-${memberName.replace(/\s+/g, "-")}">
+        <div class="profile-content-inner">
+          ${profileText.replace(/\n/g, "<br>")}
+        </div>
+      </div>
+    `;
+
+    const header = profileItem.querySelector(".accordion-header");
+    const content = profileItem.querySelector(".accordion-content");
+    const buttonText = profileItem.querySelector(".accordion-toggle-btn");
+
+    setupAccordionToggle(header, content, buttonText, profileItem);
+
+    fragment.appendChild(profileItem);
+  });
+
+  container.appendChild(fragment);
+}
 
 /**
  * Renderiza os resultados da busca.
@@ -357,4 +357,3 @@ export function renderTimelineMobile(container, timelineData) {
 
   container.appendChild(fragment);
 }
-
