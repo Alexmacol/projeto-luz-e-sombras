@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /src/images/
+
+Sitemap: https://projeto-luz-e-sombras.vercel.app/sitemap.xml

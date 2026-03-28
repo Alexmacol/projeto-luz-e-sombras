@@ -5,8 +5,26 @@
     <meta
       name="viewport"
       content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Explore a trajetória lendária do Led Zeppelin: discografia completa, perfis dos membros, linha do tempo interativa e fatos históricos da maior banda de rock de todos os tempos." />
+    <meta name="keywords" content="Led Zeppelin, Rock, Jimmy Page, Robert Plant, John Paul Jones, John Bonham, Discografia Rock, História do Rock" />
+    <meta name="author" content="Alex Macol" />
 
-    <title>Led Zeppelin — Light and Shade</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://projeto-luz-e-sombras.vercel.app/" />
+    <meta property="og:title" content="Led Zeppelin — Light and Shade | História e Discografia" />
+    <meta property="og:description" content="Uma imersão completa na história e no legado do Led Zeppelin. Conheça os quatro elementos que definiram o Rock." />
+    <meta property="og:image" content="src/images/preview.webp" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://projeto-luz-e-sombras.vercel.app/" />
+    <meta property="twitter:title" content="Led Zeppelin — Light and Shade" />
+    <meta property="twitter:description" content="Uma imersão completa na história e no legado do Led Zeppelin." />
+    <meta property="twitter:image" content="src/images/preview.webp" />
+
+    <link rel="canonical" href="https://projeto-luz-e-sombras.vercel.app/" />
+    <title>Led Zeppelin — Light and Shade | História e Discografia Oficial</title>
 
     <link
       rel="stylesheet"
@@ -14,6 +32,23 @@
     <link
       rel="stylesheet"
       href="src/css/responsive.css" />
+
+    <!-- Dados Estruturados (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicGroup",
+      "name": "Led Zeppelin",
+      "genre": ["Hard rock", "Blues rock", "Folk rock"],
+      "description": "Banda britânica de rock formada em Londres em 1968, consistindo no guitarrista Jimmy Page, no vocalista Robert Plant, no baixista e tecladista John Paul Jones e no baterista John Bonham.",
+      "member": [
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Jimmy Page" }, "roleName": "Guitarrista" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Robert Plant" }, "roleName": "Vocalista" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "John Paul Jones" }, "roleName": "Baixista/Tecladista" },
+        { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "John Bonham" }, "roleName": "Baterista" }
+      ]
+    }
+    </script>
   </head>
   <body class="title-gap-2">
     <!-- HEADER -->
@@ -161,7 +196,7 @@
             <h2 class="section-title">História</h2>
             <h3 class="section-subtitle">A Jornada</h3>
             <div class="history-wrapper">
-              <!-- card adicionado dinamicamente -->
+              <!-- SSR_HISTORY -->
             </div>
           </div>
         </section>
@@ -200,7 +235,7 @@
             </div>
 
             <div class="profiles-wrapper">
-              <!-- cards adicionados dinamicamente -->
+              <!-- SSR_PROFILES -->
             </div>
           </div>
         </section>
@@ -213,7 +248,7 @@
             <h2 class="section-title">Discografia</h2>
             <h3 class="section-subtitle">O Legado</h3>
             <div class="discography-wrapper">
-              <!-- cards adicionados dinamicamente -->
+              <!-- SSR_DISCOGRAPHY -->
             </div>
           </div>
         </section>
