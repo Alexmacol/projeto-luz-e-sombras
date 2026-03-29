@@ -21,7 +21,7 @@ export async function fetchLocalData() {
     }
 
     // 🔁 fallback: buscar via fetch (caso não exista SSR)
-    const response = await fetch("data.json");
+    const response = await fetch("/data.json");
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

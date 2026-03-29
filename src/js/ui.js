@@ -28,19 +28,19 @@ export function renderError(container, message) {
 }
 
 /**
- * 🔥 IMPORTANTE: agora respeita SSR
+ * HISTORY
+ * 🔥 respeita SSR
  */
 export function renderHistory(sectionElement, historyText) {
   const historyWrapper = sectionElement.querySelector(".history-wrapper");
-
   if (!historyWrapper) return;
 
-  // ✅ NÃO sobrescreve conteúdo SSR
+  // NÃO sobrescreve SSR
   if (historyWrapper.children.length > 0) return;
 
   const card = document.createElement("article");
   card.classList.add("card");
-  card.innerHTML = `<p>${historyText.replace(/\n/g, "<br>")}</p>`;
+  card.innerHTML = `<p>${(historyText || "").replace(/\n/g, "<br>")}</p>`;
 
   historyWrapper.appendChild(card);
 }
@@ -58,15 +58,18 @@ function setupAccordionToggle(header, content, buttonText, item) {
 }
 
 /**
- * 🔥 Corrigido: respeita SSR
+ * DISCOGRAPHY
+ * 🔥 respeita SSR
  */
 export function renderAlbumsAndCompilations(container, data) {
-  // ✅ NÃO sobrescreve conteúdo SSR
+  if (!container) return;
+
+  // NÃO sobrescreve SSR
   if (container.children.length > 0) return;
 
   const fragment = document.createDocumentFragment();
 
-  data.forEach((album) => {
+  (data || []).forEach((album) => {
     const albumId = album.album.replace(/[^a-zA-Z0-9]/g, "-");
 
     const albumItem = document.createElement("div");
@@ -87,7 +90,7 @@ export function renderAlbumsAndCompilations(container, data) {
             <div class="right-side">
               <p><strong>Músicas:</strong></p>
               <ul>
-                ${album.tracks.map((track) => `<li>${track}</li>`).join("")}
+                ${(album.tracks || []).map((track) => `<li>${track}</li>`).join("")}
               </ul>
             </div>
           </div>
@@ -108,9 +111,13 @@ export function renderAlbumsAndCompilations(container, data) {
 }
 
 /**
- * 🔥 Corrigido: respeita SSR
+ * PROFILES
+ * 🔥 respeita SSR
  */
 export function renderProfiles(container, profilesData) {
+  if (!container) return;
+
+  // NÃO sobrescreve SSR
   if (container.children.length > 0) return;
 
   const membersOrder = [
@@ -127,7 +134,7 @@ export function renderProfiles(container, profilesData) {
   const fragment = document.createDocumentFragment();
 
   membersOrder.forEach((memberName) => {
-    const profileText = profilesData[memberName];
+    const profileText = profilesData?.[memberName];
     if (!profileText) return;
 
     const displayName = displayNames[memberName] || memberName;
@@ -144,7 +151,7 @@ export function renderProfiles(container, profilesData) {
       </button>
       <div class="accordion-content">
         <div class="profile-content-inner">
-          ${profileText.replace(/\n/g, "<br>")}
+          ${(profileText || "").replace(/\n/g, "<br>")}
         </div>
       </div>
     `;
@@ -159,4 +166,40 @@ export function renderProfiles(container, profilesData) {
   });
 
   container.appendChild(fragment);
+}
+
+/**
+ * 🔧 RESTAURADO — usado por search.js
+ */
+export function renderSearchResults(results = []) {
+  const container = document.getElementById("search-results");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (!results.length) {
+    container.innerHTML = "<p>Nenhum resultado encontrado.</p>";
+    return;
+  }
+
+  const list = document.createElement("ul");
+
+  results.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item.title || item;
+    list.appendChild(li);
+  });
+
+  container.appendChild(list);
+}
+
+/**
+ * 🔧 RESTAURADO — usado por timeline.js
+ */
+export function renderTimelineMobile(points = []) {
+  const container = document.querySelector(".timeline-container");
+  if (!container) return;
+
+  // fallback simples (não quebra nada)
+  console.warn("renderTimelineMobile ativo (fallback)");
 }

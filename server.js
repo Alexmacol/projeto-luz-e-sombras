@@ -5,11 +5,11 @@ import path from "path";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve arquivos estáticos (css, js, imagens)
+// arquivos estáticos
 app.use(express.static(path.resolve("./")));
 
 /**
- * Função para carregar os dados locais
+ * Carrega dados locais
  */
 async function getLocalData() {
   const data = await fs.readFile("data.json", "utf-8");
@@ -111,29 +111,32 @@ function generateDiscographySSR(data) {
 app.get("/", async (req, res) => {
   try {
     let html = await fs.readFile("index.html", "utf-8");
+
+     // 👇 COLOQUE ESTE LOG AQUI
+    console.log("CONTÉM SSR_HISTORY?", html.includes("<!-- SSR_HISTORY -->"));
+
     const data = await getLocalData();
 
-    //  SSR conteúdo
-    html = html.replace(
-      "<!-- SSR_HISTORY -->",
-      generateHistorySSR(data.historia)
-    );
+    // 🔥 SSR ROBUSTO (regex)
+    html = html.replace("<!-- SSR_HISTORY -->", generateHistorySSR(data.historia));
 
     html = html.replace(
-      "<!-- SSR_PROFILES -->",
+      /<!--\s*SSR_PROFILES\s*-->/,
       generateProfilesSSR(data.perfis)
     );
 
     html = html.replace(
-      "<!-- SSR_DISCOGRAPHY -->",
+      /<!--\s*SSR_DISCOGRAPHY\s*-->/,
       generateDiscographySSR(data.discografia)
     );
 
-    // INJEÇÃO GLOBAL DOS DADOS (ESSENCIAL PARA PERFORMANCE)
-    html = html.replace(
-      "</head>",
-      `<script>window.__DATA__ = ${JSON.stringify(data)};</script></head>`
-    );
+    // 🔥 INJEÇÃO SEGURA DOS DADOS
+    // html = html.replace(
+    //   "</head>",
+    //   `<script>
+    //     window.__DATA__ = ${JSON.stringify(data).replace(/</g, "\\u003c")}
+    //   </script></head>`
+    // );
 
     res.send(html);
   } catch (error) {
