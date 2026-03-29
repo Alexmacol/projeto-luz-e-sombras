@@ -333,7 +333,7 @@ function setupHeaderObserver() {
 async function initialize() {
   await loadAndRenderData(); // Carrega os dados uma única vez
   await renderInitialPageContent(); // Garante o estado inicial de visibilidade
-  // setupSearchHandlers();
+  setupSearchHandlers();
   setupNavigationHandlers(); // Inicializa os handlers de navegação inteligentes
   initMobileMenu();
   setupCloseSearchListener(); // Configura o listener para o botão de fechar
