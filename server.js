@@ -146,83 +146,11 @@ async function runUpdates() {
   }
 }
 
-// --- SSR HELPERS ---
-
-function generateHistorySSR(text) {
-  if (!text) return "";
-  return `<article class="card"><p>${text.replace(/\n/g, "<br>")}</p></article>`;
-}
-
-function generateProfilesSSR(profiles) {
-  if (!profiles) return "";
-  const membersOrder = ["Jimmy Page", "John Paul Jones", "John Bonham", "Robert Plant"];
-  return membersOrder.map(name => {
-    const text = profiles[name] || "";
-    const id = name.replace(/\s+/g, "-");
-    const symbol = name.toLowerCase().replace(/\s+/g, "-");
-    return `
-      <div class="accordion-item profile-item">
-        <button class="accordion-header" aria-expanded="false" aria-controls="profile-content-${id}">
-          <img src="src/images/${symbol}.svg" alt="Símbolo de ${name}" class="profile-header-symbol">
-          <span class="accordion-name">${name}</span>
-          <span class="accordion-toggle-btn">+</span>
-        </button>
-        <div class="accordion-content" id="profile-content-${id}">
-          <div class="profile-content-inner">${text.replace(/\n/g, "<br>")}</div>
-        </div>
-      </div>`;
-  }).join("");
-}
-
-function generateDiscographySSR(albuns) {
-  if (!albuns) return "";
-  return albuns.map(album => {
-    const id = album.album.replace(/[^a-zA-Z0-9]/g, "-");
-    return `
-      <div class="accordion-item album-item">
-        <button class="accordion-header" aria-expanded="false" aria-controls="album-content-${id}">
-          <span class="accordion-name">${album.album}</span>
-          <span class="accordion-toggle-btn">+</span>
-        </button>
-        <div class="accordion-content" id="album-content-${id}">
-          <div class="album-content-inner">
-            <div class="card-content-split">
-              <div class="left-side">
-                <p><strong>Ano: </strong>${album.year}</p>
-                <p>${album.description}</p>
-              </div>
-              <div class="right-side">
-                <p><strong>Músicas:</strong></p>
-                <ul>${album.tracks.map(t => `<li>${t}</li>`).join("")}</ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>`;
-  }).join("");
-}
-
 // --- SERVIDOR ---
 
 app.use((req, res, next) => {
   if ([".env", "server.js", "package.json"].some(f => req.path.includes(f))) return res.status(403).send("Acesso negado.");
   next();
-});
-
-app.get("/", async (req, res) => {
-  try {
-    let html = await fs.readFile(path.join(__dirname, "index.html"), "utf-8");
-    const data = await getLocalData();
-    const lz = data.led_zeppelin;
-
-    html = html.replace("<!-- SSR_HISTORY -->", generateHistorySSR(lz.historia));
-    html = html.replace("<!-- SSR_PROFILES -->", generateProfilesSSR(lz.perfis));
-    html = html.replace("<!-- SSR_DISCOGRAPHY -->", generateDiscographySSR(lz.albuns));
-
-    res.send(html);
-  } catch (err) {
-    res.sendFile(path.join(__dirname, "index.html"));
-  }
 });
 
 app.get("/api/data", async (req, res) => {
